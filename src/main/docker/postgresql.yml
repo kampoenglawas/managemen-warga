@@ -1,0 +1,12 @@
+version: '2'
+services:
+  civilianmanagement-postgresql:
+    image: postgres:12.1
+    # volumes:
+    #     - ~/volumes/jhipster/civilianManagement/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=civilianManagement
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432

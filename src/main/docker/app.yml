@@ -1,0 +1,8 @@
+version: '2'
+services:
+  civilianmanagement-app:
+    build: ../../..
+    container_name: civilianmanagement-app
+    environment:
+    ports:
+      - 8081:8081
