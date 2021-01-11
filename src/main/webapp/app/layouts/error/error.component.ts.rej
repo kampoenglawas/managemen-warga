@@ -1,4 +1,0 @@
-diff a/src/main/webapp/app/layouts/error/error.component.ts b/src/main/webapp/app/layouts/error/error.component.ts	(rejected hunks)
-@@ -8 +8 @@ import { TranslateService } from '@ngx-translate/core';
--  templateUrl: './error.component.html',
-+  templateUrl: './error.component.html'

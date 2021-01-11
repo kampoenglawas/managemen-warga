@@ -4,7 +4,7 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import Civilian from '../src/domain/civilian.entity';
+import { CivilianDTO } from '../src/service/dto/civilian.dto';
 import { CivilianService } from '../src/service/civilian.service';
 
 describe('Civilian Controller', () => {
@@ -21,7 +21,7 @@ describe('Civilian Controller', () => {
     findAndCount: (): any => [entityMock, 0],
     save: (): any => entityMock,
     update: (): any => entityMock,
-    delete: (): any => entityMock
+    deleteById: (): any => entityMock
   };
 
   beforeEach(async () => {
@@ -41,7 +41,7 @@ describe('Civilian Controller', () => {
   });
 
   it('/GET all civilians ', async () => {
-    const getEntities: Civilian[] = (
+    const getEntities: CivilianDTO[] = (
       await request(app.getHttpServer())
         .get('/api/civilians')
         .expect(200)
@@ -51,7 +51,7 @@ describe('Civilian Controller', () => {
   });
 
   it('/GET civilians by id', async () => {
-    const getEntity: Civilian = (
+    const getEntity: CivilianDTO = (
       await request(app.getHttpServer())
         .get('/api/civilians/' + entityMock.id)
         .expect(200)
@@ -61,7 +61,7 @@ describe('Civilian Controller', () => {
   });
 
   it('/POST create civilians', async () => {
-    const createdEntity: Civilian = (
+    const createdEntity: CivilianDTO = (
       await request(app.getHttpServer())
         .post('/api/civilians')
         .send(entityMock)
@@ -72,7 +72,7 @@ describe('Civilian Controller', () => {
   });
 
   it('/PUT update civilians', async () => {
-    const updatedEntity: Civilian = (
+    const updatedEntity: CivilianDTO = (
       await request(app.getHttpServer())
         .put('/api/civilians')
         .send(entityMock)
@@ -83,7 +83,7 @@ describe('Civilian Controller', () => {
   });
 
   it('/DELETE civilians', async () => {
-    const deletedEntity: Civilian = (
+    const deletedEntity: CivilianDTO = (
       await request(app.getHttpServer())
         .delete('/api/civilians/' + entityMock.id)
         .expect(204)

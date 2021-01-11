@@ -35,7 +35,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20210109134800",
+    "changelogDate": "20210111133500",
     "entityTableName": "residence",
     "dto": "no",
     "pagination": "pagination",

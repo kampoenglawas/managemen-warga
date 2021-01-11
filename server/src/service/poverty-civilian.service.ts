@@ -1,7 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindManyOptions, FindOneOptions } from 'typeorm';
-import PovertyCivilian from '../domain/poverty-civilian.entity';
+import { PovertyCivilianDTO } from '../service/dto/poverty-civilian.dto';
+import { PovertyCivilianMapper } from '../service/mapper/poverty-civilian.mapper';
 import { PovertyCivilianRepository } from '../repository/poverty-civilian.repository';
 
 const relationshipNames = [];
@@ -12,29 +13,46 @@ export class PovertyCivilianService {
 
   constructor(@InjectRepository(PovertyCivilianRepository) private povertyCivilianRepository: PovertyCivilianRepository) {}
 
-  async findById(id: string): Promise<PovertyCivilian | undefined> {
+  async findById(id: string): Promise<PovertyCivilianDTO | undefined> {
     const options = { relations: relationshipNames };
-    return await this.povertyCivilianRepository.findOne(id, options);
+    const result = await this.povertyCivilianRepository.findOne(id, options);
+    return PovertyCivilianMapper.fromEntityToDTO(result);
   }
 
-  async findByfields(options: FindOneOptions<PovertyCivilian>): Promise<PovertyCivilian | undefined> {
-    return await this.povertyCivilianRepository.findOne(options);
+  async findByfields(options: FindOneOptions<PovertyCivilianDTO>): Promise<PovertyCivilianDTO | undefined> {
+    const result = await this.povertyCivilianRepository.findOne(options);
+    return PovertyCivilianMapper.fromEntityToDTO(result);
   }
 
-  async findAndCount(options: FindManyOptions<PovertyCivilian>): Promise<[PovertyCivilian[], number]> {
+  async findAndCount(options: FindManyOptions<PovertyCivilianDTO>): Promise<[PovertyCivilianDTO[], number]> {
     options.relations = relationshipNames;
-    return await this.povertyCivilianRepository.findAndCount(options);
+    const resultList = await this.povertyCivilianRepository.findAndCount(options);
+    const povertyCivilianDTO: PovertyCivilianDTO[] = [];
+    if (resultList && resultList[0]) {
+      resultList[0].forEach(povertyCivilian => povertyCivilianDTO.push(PovertyCivilianMapper.fromEntityToDTO(povertyCivilian)));
+      resultList[0] = povertyCivilianDTO;
+    }
+    return resultList;
   }
 
-  async save(povertyCivilian: PovertyCivilian): Promise<PovertyCivilian | undefined> {
-    return await this.povertyCivilianRepository.save(povertyCivilian);
+  async save(povertyCivilianDTO: PovertyCivilianDTO): Promise<PovertyCivilianDTO | undefined> {
+    const entity = PovertyCivilianMapper.fromDTOtoEntity(povertyCivilianDTO);
+    const result = await this.povertyCivilianRepository.save(entity);
+    return PovertyCivilianMapper.fromEntityToDTO(result);
   }
 
-  async update(povertyCivilian: PovertyCivilian): Promise<PovertyCivilian | undefined> {
-    return await this.save(povertyCivilian);
+  async update(povertyCivilianDTO: PovertyCivilianDTO): Promise<PovertyCivilianDTO | undefined> {
+    const entity = PovertyCivilianMapper.fromDTOtoEntity(povertyCivilianDTO);
+    const result = await this.povertyCivilianRepository.save(entity);
+    return PovertyCivilianMapper.fromEntityToDTO(result);
   }
 
-  async delete(povertyCivilian: PovertyCivilian): Promise<PovertyCivilian | undefined> {
-    return await this.povertyCivilianRepository.remove(povertyCivilian);
+  async deleteById(id: string): Promise<void | undefined> {
+    await this.povertyCivilianRepository.delete(id);
+    const entityFind = await this.findById(id);
+    if (entityFind) {
+      throw new HttpException('Error, entity not deleted!', HttpStatus.NOT_FOUND);
+    }
+    return;
   }
 }

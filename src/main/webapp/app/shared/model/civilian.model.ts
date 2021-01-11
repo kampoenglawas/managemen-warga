@@ -14,11 +14,11 @@ export interface ICivilian {
   identityCardImage?: any;
   dateOfBirth?: Moment;
   placeOfBirth?: string;
-  contact?: string;
   gender?: Gender;
-  status?: MemberStatus;
   additionalInfo?: string;
   yearlyIncome?: number;
+  contact?: string;
+  status?: MemberStatus;
   benefits?: IBenefit[];
   familyMember?: IFamilyMember;
   povertyCivilian?: IPovertyCivilian;
@@ -34,11 +34,11 @@ export class Civilian implements ICivilian {
     public identityCardImage?: any,
     public dateOfBirth?: Moment,
     public placeOfBirth?: string,
-    public contact?: string,
     public gender?: Gender,
-    public status?: MemberStatus,
     public additionalInfo?: string,
     public yearlyIncome?: number,
+    public contact?: string,
+    public status?: MemberStatus,
     public benefits?: IBenefit[],
     public familyMember?: IFamilyMember,
     public povertyCivilian?: IPovertyCivilian,

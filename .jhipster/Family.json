@@ -22,7 +22,7 @@
             "relationshipName": "member"
         }
     ],
-    "changelogDate": "20210109134700",
+    "changelogDate": "20210111133400",
     "entityTableName": "family",
     "dto": "no",
     "pagination": "pagination",

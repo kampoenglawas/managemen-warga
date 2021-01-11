@@ -4,7 +4,7 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import PovertyCivilian from '../src/domain/poverty-civilian.entity';
+import { PovertyCivilianDTO } from '../src/service/dto/poverty-civilian.dto';
 import { PovertyCivilianService } from '../src/service/poverty-civilian.service';
 
 describe('PovertyCivilian Controller', () => {
@@ -21,7 +21,7 @@ describe('PovertyCivilian Controller', () => {
     findAndCount: (): any => [entityMock, 0],
     save: (): any => entityMock,
     update: (): any => entityMock,
-    delete: (): any => entityMock
+    deleteById: (): any => entityMock
   };
 
   beforeEach(async () => {
@@ -41,7 +41,7 @@ describe('PovertyCivilian Controller', () => {
   });
 
   it('/GET all poverty-civilians ', async () => {
-    const getEntities: PovertyCivilian[] = (
+    const getEntities: PovertyCivilianDTO[] = (
       await request(app.getHttpServer())
         .get('/api/poverty-civilians')
         .expect(200)
@@ -51,7 +51,7 @@ describe('PovertyCivilian Controller', () => {
   });
 
   it('/GET poverty-civilians by id', async () => {
-    const getEntity: PovertyCivilian = (
+    const getEntity: PovertyCivilianDTO = (
       await request(app.getHttpServer())
         .get('/api/poverty-civilians/' + entityMock.id)
         .expect(200)
@@ -61,7 +61,7 @@ describe('PovertyCivilian Controller', () => {
   });
 
   it('/POST create poverty-civilians', async () => {
-    const createdEntity: PovertyCivilian = (
+    const createdEntity: PovertyCivilianDTO = (
       await request(app.getHttpServer())
         .post('/api/poverty-civilians')
         .send(entityMock)
@@ -72,7 +72,7 @@ describe('PovertyCivilian Controller', () => {
   });
 
   it('/PUT update poverty-civilians', async () => {
-    const updatedEntity: PovertyCivilian = (
+    const updatedEntity: PovertyCivilianDTO = (
       await request(app.getHttpServer())
         .put('/api/poverty-civilians')
         .send(entityMock)
@@ -83,7 +83,7 @@ describe('PovertyCivilian Controller', () => {
   });
 
   it('/DELETE poverty-civilians', async () => {
-    const deletedEntity: PovertyCivilian = (
+    const deletedEntity: PovertyCivilianDTO = (
       await request(app.getHttpServer())
         .delete('/api/poverty-civilians/' + entityMock.id)
         .expect(204)

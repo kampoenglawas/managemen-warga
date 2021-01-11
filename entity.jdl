@@ -43,19 +43,19 @@ entity Civilian {
   identityCardImage ImageBlob
   dateOfBirth LocalDate required
   placeOfBirth String required
-  contact String required
   gender Gender required
-  status MemberStatus required
   additionalInfo String
   yearlyIncome BigDecimal
+  contact String required
+  status MemberStatus required
 
 }
 
 entity Benefit {
   description String required
   type BenefitType required
-  frequency Integer required
   value BigDecimal
+  frequency Integer required
   repetition RepetitionType required
 }
 

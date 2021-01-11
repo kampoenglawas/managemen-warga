@@ -4,7 +4,7 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import Family from '../src/domain/family.entity';
+import { FamilyDTO } from '../src/service/dto/family.dto';
 import { FamilyService } from '../src/service/family.service';
 
 describe('Family Controller', () => {
@@ -21,7 +21,7 @@ describe('Family Controller', () => {
     findAndCount: (): any => [entityMock, 0],
     save: (): any => entityMock,
     update: (): any => entityMock,
-    delete: (): any => entityMock
+    deleteById: (): any => entityMock
   };
 
   beforeEach(async () => {
@@ -41,7 +41,7 @@ describe('Family Controller', () => {
   });
 
   it('/GET all families ', async () => {
-    const getEntities: Family[] = (
+    const getEntities: FamilyDTO[] = (
       await request(app.getHttpServer())
         .get('/api/families')
         .expect(200)
@@ -51,7 +51,7 @@ describe('Family Controller', () => {
   });
 
   it('/GET families by id', async () => {
-    const getEntity: Family = (
+    const getEntity: FamilyDTO = (
       await request(app.getHttpServer())
         .get('/api/families/' + entityMock.id)
         .expect(200)
@@ -61,7 +61,7 @@ describe('Family Controller', () => {
   });
 
   it('/POST create families', async () => {
-    const createdEntity: Family = (
+    const createdEntity: FamilyDTO = (
       await request(app.getHttpServer())
         .post('/api/families')
         .send(entityMock)
@@ -72,7 +72,7 @@ describe('Family Controller', () => {
   });
 
   it('/PUT update families', async () => {
-    const updatedEntity: Family = (
+    const updatedEntity: FamilyDTO = (
       await request(app.getHttpServer())
         .put('/api/families')
         .send(entityMock)
@@ -83,7 +83,7 @@ describe('Family Controller', () => {
   });
 
   it('/DELETE families', async () => {
-    const deletedEntity: Family = (
+    const deletedEntity: FamilyDTO = (
       await request(app.getHttpServer())
         .delete('/api/families/' + entityMock.id)
         .expect(204)

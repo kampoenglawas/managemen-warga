@@ -6,8 +6,8 @@ export interface IBenefit {
   id?: number;
   description?: string;
   type?: BenefitType;
-  frequency?: number;
   value?: number;
+  frequency?: number;
   repetition?: RepetitionType;
   civilians?: ICivilian[];
 }
@@ -17,8 +17,8 @@ export class Benefit implements IBenefit {
     public id?: number,
     public description?: string,
     public type?: BenefitType,
-    public frequency?: number,
     public value?: number,
+    public frequency?: number,
     public repetition?: RepetitionType,
     public civilians?: ICivilian[]
   ) {}

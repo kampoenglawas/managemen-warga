@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Logger, Param, Post as PostMethod, Put, UseGuards, Req, UseInterceptors } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { Request } from 'express';
-import Family from '../../domain/family.entity';
+import { FamilyDTO } from '../../service/dto/family.dto';
 import { FamilyService } from '../../service/family.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
@@ -23,9 +23,9 @@ export class FamilyController {
   @ApiResponse({
     status: 200,
     description: 'List all records',
-    type: Family
+    type: FamilyDTO
   })
-  async getAll(@Req() req: Request): Promise<Family[]> {
+  async getAll(@Req() req: Request): Promise<FamilyDTO[]> {
     const pageRequest: PageRequest = new PageRequest(req.query.page, req.query.size, req.query.sort);
     const [results, count] = await this.familyService.findAndCount({
       skip: +pageRequest.page * pageRequest.size,
@@ -41,50 +41,49 @@ export class FamilyController {
   @ApiResponse({
     status: 200,
     description: 'The found record',
-    type: Family
+    type: FamilyDTO
   })
-  async getOne(@Param('id') id: string): Promise<Family> {
+  async getOne(@Param('id') id: string): Promise<FamilyDTO> {
     return await this.familyService.findById(id);
   }
 
   @PostMethod('/')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Create family' })
   @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
-    type: Family
+    type: FamilyDTO
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
-  async post(@Req() req: Request, @Body() family: Family): Promise<Family> {
-    const created = await this.familyService.save(family);
+  async post(@Req() req: Request, @Body() familyDTO: FamilyDTO): Promise<FamilyDTO> {
+    const created = await this.familyService.save(familyDTO);
     HeaderUtil.addEntityCreatedHeaders(req.res, 'Family', created.id);
     return created;
   }
 
   @Put('/')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Update family' })
   @ApiResponse({
     status: 200,
     description: 'The record has been successfully updated.',
-    type: Family
+    type: FamilyDTO
   })
-  async put(@Req() req: Request, @Body() family: Family): Promise<Family> {
-    HeaderUtil.addEntityCreatedHeaders(req.res, 'Family', family.id);
-    return await this.familyService.update(family);
+  async put(@Req() req: Request, @Body() familyDTO: FamilyDTO): Promise<FamilyDTO> {
+    HeaderUtil.addEntityCreatedHeaders(req.res, 'Family', familyDTO.id);
+    return await this.familyService.update(familyDTO);
   }
 
   @Delete('/:id')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Delete family' })
   @ApiResponse({
     status: 204,
     description: 'The record has been successfully deleted.'
   })
-  async remove(@Req() req: Request, @Param('id') id: string): Promise<Family> {
+  async deleteById(@Req() req: Request, @Param('id') id: string): Promise<void> {
     HeaderUtil.addEntityDeletedHeaders(req.res, 'Family', id);
-    const toDelete = await this.familyService.findById(id);
-    return await this.familyService.delete(toDelete);
+    return await this.familyService.deleteById(id);
   }
 }

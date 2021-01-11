@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Logger, Param, Post as PostMethod, Put, UseGuards, Req, UseInterceptors } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { Request } from 'express';
-import Residence from '../../domain/residence.entity';
+import { ResidenceDTO } from '../../service/dto/residence.dto';
 import { ResidenceService } from '../../service/residence.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
@@ -23,9 +23,9 @@ export class ResidenceController {
   @ApiResponse({
     status: 200,
     description: 'List all records',
-    type: Residence
+    type: ResidenceDTO
   })
-  async getAll(@Req() req: Request): Promise<Residence[]> {
+  async getAll(@Req() req: Request): Promise<ResidenceDTO[]> {
     const pageRequest: PageRequest = new PageRequest(req.query.page, req.query.size, req.query.sort);
     const [results, count] = await this.residenceService.findAndCount({
       skip: +pageRequest.page * pageRequest.size,
@@ -41,50 +41,49 @@ export class ResidenceController {
   @ApiResponse({
     status: 200,
     description: 'The found record',
-    type: Residence
+    type: ResidenceDTO
   })
-  async getOne(@Param('id') id: string): Promise<Residence> {
+  async getOne(@Param('id') id: string): Promise<ResidenceDTO> {
     return await this.residenceService.findById(id);
   }
 
   @PostMethod('/')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Create residence' })
   @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
-    type: Residence
+    type: ResidenceDTO
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
-  async post(@Req() req: Request, @Body() residence: Residence): Promise<Residence> {
-    const created = await this.residenceService.save(residence);
+  async post(@Req() req: Request, @Body() residenceDTO: ResidenceDTO): Promise<ResidenceDTO> {
+    const created = await this.residenceService.save(residenceDTO);
     HeaderUtil.addEntityCreatedHeaders(req.res, 'Residence', created.id);
     return created;
   }
 
   @Put('/')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Update residence' })
   @ApiResponse({
     status: 200,
     description: 'The record has been successfully updated.',
-    type: Residence
+    type: ResidenceDTO
   })
-  async put(@Req() req: Request, @Body() residence: Residence): Promise<Residence> {
-    HeaderUtil.addEntityCreatedHeaders(req.res, 'Residence', residence.id);
-    return await this.residenceService.update(residence);
+  async put(@Req() req: Request, @Body() residenceDTO: ResidenceDTO): Promise<ResidenceDTO> {
+    HeaderUtil.addEntityCreatedHeaders(req.res, 'Residence', residenceDTO.id);
+    return await this.residenceService.update(residenceDTO);
   }
 
   @Delete('/:id')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Delete residence' })
   @ApiResponse({
     status: 204,
     description: 'The record has been successfully deleted.'
   })
-  async remove(@Req() req: Request, @Param('id') id: string): Promise<Residence> {
+  async deleteById(@Req() req: Request, @Param('id') id: string): Promise<void> {
     HeaderUtil.addEntityDeletedHeaders(req.res, 'Residence', id);
-    const toDelete = await this.residenceService.findById(id);
-    return await this.residenceService.delete(toDelete);
+    return await this.residenceService.deleteById(id);
   }
 }

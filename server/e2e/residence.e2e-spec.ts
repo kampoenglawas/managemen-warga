@@ -4,7 +4,7 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import Residence from '../src/domain/residence.entity';
+import { ResidenceDTO } from '../src/service/dto/residence.dto';
 import { ResidenceService } from '../src/service/residence.service';
 
 describe('Residence Controller', () => {
@@ -21,7 +21,7 @@ describe('Residence Controller', () => {
     findAndCount: (): any => [entityMock, 0],
     save: (): any => entityMock,
     update: (): any => entityMock,
-    delete: (): any => entityMock
+    deleteById: (): any => entityMock
   };
 
   beforeEach(async () => {
@@ -41,7 +41,7 @@ describe('Residence Controller', () => {
   });
 
   it('/GET all residences ', async () => {
-    const getEntities: Residence[] = (
+    const getEntities: ResidenceDTO[] = (
       await request(app.getHttpServer())
         .get('/api/residences')
         .expect(200)
@@ -51,7 +51,7 @@ describe('Residence Controller', () => {
   });
 
   it('/GET residences by id', async () => {
-    const getEntity: Residence = (
+    const getEntity: ResidenceDTO = (
       await request(app.getHttpServer())
         .get('/api/residences/' + entityMock.id)
         .expect(200)
@@ -61,7 +61,7 @@ describe('Residence Controller', () => {
   });
 
   it('/POST create residences', async () => {
-    const createdEntity: Residence = (
+    const createdEntity: ResidenceDTO = (
       await request(app.getHttpServer())
         .post('/api/residences')
         .send(entityMock)
@@ -72,7 +72,7 @@ describe('Residence Controller', () => {
   });
 
   it('/PUT update residences', async () => {
-    const updatedEntity: Residence = (
+    const updatedEntity: ResidenceDTO = (
       await request(app.getHttpServer())
         .put('/api/residences')
         .send(entityMock)
@@ -83,7 +83,7 @@ describe('Residence Controller', () => {
   });
 
   it('/DELETE residences', async () => {
-    const deletedEntity: Residence = (
+    const deletedEntity: ResidenceDTO = (
       await request(app.getHttpServer())
         .delete('/api/residences/' + entityMock.id)
         .expect(204)

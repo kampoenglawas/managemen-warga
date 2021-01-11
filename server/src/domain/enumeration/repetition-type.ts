@@ -4,5 +4,5 @@
 export enum RepetitionType {
   NoRepetition = 'NoRepetition',
   Month = 'Month',
-  Year = 'Year',
+  Year = 'Year'
 }

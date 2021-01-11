@@ -14,7 +14,7 @@
             "relationshipName": "residence"
         }
     ],
-    "changelogDate": "20210109134300",
+    "changelogDate": "20210111132900",
     "entityTableName": "rt",
     "dto": "no",
     "pagination": "pagination",

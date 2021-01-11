@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Logger, Param, Post as PostMethod, Put, UseGuards, Req, UseInterceptors } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { Request } from 'express';
-import RT from '../../domain/rt.entity';
+import { RTDTO } from '../../service/dto/rt.dto';
 import { RTService } from '../../service/rt.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
@@ -23,9 +23,9 @@ export class RTController {
   @ApiResponse({
     status: 200,
     description: 'List all records',
-    type: RT
+    type: RTDTO
   })
-  async getAll(@Req() req: Request): Promise<RT[]> {
+  async getAll(@Req() req: Request): Promise<RTDTO[]> {
     const pageRequest: PageRequest = new PageRequest(req.query.page, req.query.size, req.query.sort);
     const [results, count] = await this.rTService.findAndCount({
       skip: +pageRequest.page * pageRequest.size,
@@ -41,50 +41,49 @@ export class RTController {
   @ApiResponse({
     status: 200,
     description: 'The found record',
-    type: RT
+    type: RTDTO
   })
-  async getOne(@Param('id') id: string): Promise<RT> {
+  async getOne(@Param('id') id: string): Promise<RTDTO> {
     return await this.rTService.findById(id);
   }
 
   @PostMethod('/')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Create rT' })
   @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
-    type: RT
+    type: RTDTO
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
-  async post(@Req() req: Request, @Body() rT: RT): Promise<RT> {
-    const created = await this.rTService.save(rT);
+  async post(@Req() req: Request, @Body() rTDTO: RTDTO): Promise<RTDTO> {
+    const created = await this.rTService.save(rTDTO);
     HeaderUtil.addEntityCreatedHeaders(req.res, 'RT', created.id);
     return created;
   }
 
   @Put('/')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Update rT' })
   @ApiResponse({
     status: 200,
     description: 'The record has been successfully updated.',
-    type: RT
+    type: RTDTO
   })
-  async put(@Req() req: Request, @Body() rT: RT): Promise<RT> {
-    HeaderUtil.addEntityCreatedHeaders(req.res, 'RT', rT.id);
-    return await this.rTService.update(rT);
+  async put(@Req() req: Request, @Body() rTDTO: RTDTO): Promise<RTDTO> {
+    HeaderUtil.addEntityCreatedHeaders(req.res, 'RT', rTDTO.id);
+    return await this.rTService.update(rTDTO);
   }
 
   @Delete('/:id')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Delete rT' })
   @ApiResponse({
     status: 204,
     description: 'The record has been successfully deleted.'
   })
-  async remove(@Req() req: Request, @Param('id') id: string): Promise<RT> {
+  async deleteById(@Req() req: Request, @Param('id') id: string): Promise<void> {
     HeaderUtil.addEntityDeletedHeaders(req.res, 'RT', id);
-    const toDelete = await this.rTService.findById(id);
-    return await this.rTService.delete(toDelete);
+    return await this.rTService.deleteById(id);
   }
 }

@@ -38,24 +38,9 @@
             ]
         },
         {
-            "fieldName": "contact",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "gender",
             "fieldType": "Gender",
             "fieldValues": "Male,Female,Other",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "status",
-            "fieldType": "MemberStatus",
-            "fieldValues": "PassAway,Moving,Active",
             "fieldValidateRules": [
                 "required"
             ]
@@ -67,6 +52,21 @@
         {
             "fieldName": "yearlyIncome",
             "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "contact",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "MemberStatus",
+            "fieldValues": "PassAway,Moving,Active",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
@@ -100,7 +100,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20210109134400",
+    "changelogDate": "20210111133100",
     "entityTableName": "civilian",
     "dto": "no",
     "pagination": "pagination",

@@ -1,60 +1,60 @@
 {
-  "name": "Benefit",
-  "fields": [
-    {
-      "fieldName": "description",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "type",
-      "fieldType": "BenefitType",
-      "fieldValues": "CASH,SCHOLARSHIP,OTHER",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "frequency",
-      "fieldType": "Integer",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "value",
-      "fieldType": "BigDecimal"
-    },
-    {
-      "fieldName": "repetition",
-      "fieldType": "RepetitionType",
-      "fieldValues": "NoRepetition,Month,Year",
-      "fieldValidateRules": [
-        "required"
-      ]
-    }
-  ],
-  "relationships": [
-    {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "civilian",
-      "otherEntityRelationshipName": "benefit",
-      "relationshipName": "civilian",
-      "otherEntityField": "id",
-      "ownerSide": false
-    }
-  ],
-  "changelogDate": "20210109134500",
-  "entityTableName": "benefit",
-  "dto": "no",
-  "pagination": "pagination",
-  "service": "no",
-  "jpaMetamodelFiltering": false,
-  "fluentMethods": true,
-  "readOnly": false,
-  "embedded": false,
-  "clientRootFolder": "",
-  "applications": "*"
+    "name": "Benefit",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "BenefitType",
+            "fieldValues": "CASH,SCHOLARSHIP,OTHER",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "frequency",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "repetition",
+            "fieldType": "RepetitionType",
+            "fieldValues": "NoRepetition,Month,Year",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "civilian",
+            "otherEntityRelationshipName": "benefit",
+            "relationshipName": "civilian",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20210111133200",
+    "entityTableName": "benefit",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
 }

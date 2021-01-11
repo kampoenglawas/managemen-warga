@@ -8,6 +8,6 @@ import { BenefitService } from '../service/benefit.service';
   imports: [TypeOrmModule.forFeature([BenefitRepository])],
   controllers: [BenefitController],
   providers: [BenefitService],
-  exports: [BenefitService],
+  exports: [BenefitService]
 })
 export class BenefitModule {}

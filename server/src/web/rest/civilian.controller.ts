@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Logger, Param, Post as PostMethod, Put, UseGuards, Req, UseInterceptors } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { Request } from 'express';
-import Civilian from '../../domain/civilian.entity';
+import { CivilianDTO } from '../../service/dto/civilian.dto';
 import { CivilianService } from '../../service/civilian.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
@@ -23,9 +23,9 @@ export class CivilianController {
   @ApiResponse({
     status: 200,
     description: 'List all records',
-    type: Civilian
+    type: CivilianDTO
   })
-  async getAll(@Req() req: Request): Promise<Civilian[]> {
+  async getAll(@Req() req: Request): Promise<CivilianDTO[]> {
     const pageRequest: PageRequest = new PageRequest(req.query.page, req.query.size, req.query.sort);
     const [results, count] = await this.civilianService.findAndCount({
       skip: +pageRequest.page * pageRequest.size,
@@ -41,50 +41,49 @@ export class CivilianController {
   @ApiResponse({
     status: 200,
     description: 'The found record',
-    type: Civilian
+    type: CivilianDTO
   })
-  async getOne(@Param('id') id: string): Promise<Civilian> {
+  async getOne(@Param('id') id: string): Promise<CivilianDTO> {
     return await this.civilianService.findById(id);
   }
 
   @PostMethod('/')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Create civilian' })
   @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
-    type: Civilian
+    type: CivilianDTO
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
-  async post(@Req() req: Request, @Body() civilian: Civilian): Promise<Civilian> {
-    const created = await this.civilianService.save(civilian);
+  async post(@Req() req: Request, @Body() civilianDTO: CivilianDTO): Promise<CivilianDTO> {
+    const created = await this.civilianService.save(civilianDTO);
     HeaderUtil.addEntityCreatedHeaders(req.res, 'Civilian', created.id);
     return created;
   }
 
   @Put('/')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Update civilian' })
   @ApiResponse({
     status: 200,
     description: 'The record has been successfully updated.',
-    type: Civilian
+    type: CivilianDTO
   })
-  async put(@Req() req: Request, @Body() civilian: Civilian): Promise<Civilian> {
-    HeaderUtil.addEntityCreatedHeaders(req.res, 'Civilian', civilian.id);
-    return await this.civilianService.update(civilian);
+  async put(@Req() req: Request, @Body() civilianDTO: CivilianDTO): Promise<CivilianDTO> {
+    HeaderUtil.addEntityCreatedHeaders(req.res, 'Civilian', civilianDTO.id);
+    return await this.civilianService.update(civilianDTO);
   }
 
   @Delete('/:id')
-  @Roles(RoleType.USER)
+  @Roles(RoleType.ADMIN)
   @ApiOperation({ title: 'Delete civilian' })
   @ApiResponse({
     status: 204,
     description: 'The record has been successfully deleted.'
   })
-  async remove(@Req() req: Request, @Param('id') id: string): Promise<Civilian> {
+  async deleteById(@Req() req: Request, @Param('id') id: string): Promise<void> {
     HeaderUtil.addEntityDeletedHeaders(req.res, 'Civilian', id);
-    const toDelete = await this.civilianService.findById(id);
-    return await this.civilianService.delete(toDelete);
+    return await this.civilianService.deleteById(id);
   }
 }

@@ -1,17 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, ManyToOne, OneToMany, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, Column, JoinColumn, OneToOne, ManyToOne, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { BaseEntity } from './base/base.entity';
 
-import { ApiModelProperty } from '@nestjs/swagger';
-import { validate, Contains, IsInt, Length, IsEmail, IsFQDN, IsDate, Min, Max } from 'class-validator';
-
-import FamilyMember from './family-member.entity';
+import { FamilyMember } from './family-member.entity';
 
 /**
  * A Family.
  */
 @Entity('family')
-export default class Family extends BaseEntity {
+export class Family extends BaseEntity {
   @Column({ name: 'family_card_no' })
   familyCardNo: string;
 

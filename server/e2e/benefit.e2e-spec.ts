@@ -4,7 +4,7 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import Benefit from '../src/domain/benefit.entity';
+import { BenefitDTO } from '../src/service/dto/benefit.dto';
 import { BenefitService } from '../src/service/benefit.service';
 
 describe('Benefit Controller', () => {
@@ -13,7 +13,7 @@ describe('Benefit Controller', () => {
   const authGuardMock = { canActivate: (): any => true };
   const rolesGuardMock = { canActivate: (): any => true };
   const entityMock: any = {
-    id: 'entityId',
+    id: 'entityId'
   };
 
   const serviceMock = {
@@ -21,12 +21,12 @@ describe('Benefit Controller', () => {
     findAndCount: (): any => [entityMock, 0],
     save: (): any => entityMock,
     update: (): any => entityMock,
-    delete: (): any => entityMock,
+    deleteById: (): any => entityMock
   };
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [AppModule]
     })
       .overrideGuard(AuthGuard)
       .useValue(authGuardMock)
@@ -41,13 +41,17 @@ describe('Benefit Controller', () => {
   });
 
   it('/GET all benefits ', async () => {
-    const getEntities: Benefit[] = (await request(app.getHttpServer()).get('/api/benefits').expect(200)).body;
+    const getEntities: BenefitDTO[] = (
+      await request(app.getHttpServer())
+        .get('/api/benefits')
+        .expect(200)
+    ).body;
 
     expect(getEntities).toEqual(entityMock);
   });
 
   it('/GET benefits by id', async () => {
-    const getEntity: Benefit = (
+    const getEntity: BenefitDTO = (
       await request(app.getHttpServer())
         .get('/api/benefits/' + entityMock.id)
         .expect(200)
@@ -57,19 +61,29 @@ describe('Benefit Controller', () => {
   });
 
   it('/POST create benefits', async () => {
-    const createdEntity: Benefit = (await request(app.getHttpServer()).post('/api/benefits').send(entityMock).expect(201)).body;
+    const createdEntity: BenefitDTO = (
+      await request(app.getHttpServer())
+        .post('/api/benefits')
+        .send(entityMock)
+        .expect(201)
+    ).body;
 
     expect(createdEntity).toEqual(entityMock);
   });
 
   it('/PUT update benefits', async () => {
-    const updatedEntity: Benefit = (await request(app.getHttpServer()).put('/api/benefits').send(entityMock).expect(201)).body;
+    const updatedEntity: BenefitDTO = (
+      await request(app.getHttpServer())
+        .put('/api/benefits')
+        .send(entityMock)
+        .expect(201)
+    ).body;
 
     expect(updatedEntity).toEqual(entityMock);
   });
 
   it('/DELETE benefits', async () => {
-    const deletedEntity: Benefit = (
+    const deletedEntity: BenefitDTO = (
       await request(app.getHttpServer())
         .delete('/api/benefits/' + entityMock.id)
         .expect(204)

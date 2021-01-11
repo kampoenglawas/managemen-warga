@@ -34,11 +34,11 @@ describe('Service Tests', () => {
         'AAAAAAA',
         currentDate,
         'AAAAAAA',
-        'AAAAAAA',
         Gender.Male,
-        MemberStatus.PassAway,
         'AAAAAAA',
-        0
+        0,
+        'AAAAAAA',
+        MemberStatus.PassAway
       );
     });
 
@@ -89,11 +89,11 @@ describe('Service Tests', () => {
             identityCardImage: 'BBBBBB',
             dateOfBirth: currentDate.format(DATE_FORMAT),
             placeOfBirth: 'BBBBBB',
-            contact: 'BBBBBB',
             gender: 'BBBBBB',
-            status: 'BBBBBB',
             additionalInfo: 'BBBBBB',
-            yearlyIncome: 1
+            yearlyIncome: 1,
+            contact: 'BBBBBB',
+            status: 'BBBBBB'
           },
           elemDefault
         );
@@ -120,11 +120,11 @@ describe('Service Tests', () => {
             identityCardImage: 'BBBBBB',
             dateOfBirth: currentDate.format(DATE_FORMAT),
             placeOfBirth: 'BBBBBB',
-            contact: 'BBBBBB',
             gender: 'BBBBBB',
-            status: 'BBBBBB',
             additionalInfo: 'BBBBBB',
-            yearlyIncome: 1
+            yearlyIncome: 1,
+            contact: 'BBBBBB',
+            status: 'BBBBBB'
           },
           elemDefault
         );

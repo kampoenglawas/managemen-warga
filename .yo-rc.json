@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "nativeLanguage": "en"
+      "nativeLanguage": "in"
     },
     "jhipsterVersion": "6.8.0",
     "applicationType": "monolith",
@@ -25,28 +25,27 @@
     "useSass": true,
     "clientPackageManager": "npm",
     "clientFramework": "angularX",
-    "clientTheme": "flatly",
+    "clientTheme": "materia",
     "clientThemeVariant": "primary",
-    "creationTimestamp": 1610198305487,
-    "testFrameworks": [],
+    "creationTimestamp": 1610371064619,
+    "testFrameworks": ["protractor"],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": [
       {
         "name": "generator-jhipster-nodejs",
-        "version": "1.2.0"
+        "version": "1.4.0"
       }
     ],
     "enableTranslation": true,
-    "nativeLanguage": "en",
-    "languages": ["en", "in"],
+    "nativeLanguage": "in",
+    "languages": ["in"],
     "blueprints": [
       {
         "name": "generator-jhipster-nodejs",
-        "version": "1.2.0"
+        "version": "1.4.0"
       }
-    ],
-    "jwtSecretKey": "MjMzNGJiNzNhOTg1ZTVlOTgwM2EyMWY2MzE1M2E1OTRkZTY5ZWIzZGE0NTNkYmViZjdmMDk4YjY0MDNlYWNiMzk3ZTE1MDRiODA2Mzg1NDEyM2I5YTYyNjZiMDk4NDEyZTc0MzkzOTQ0ZDQzMGQzMmFhNmE3ZDYzYTM5YzZlNjY="
+    ]
   }
 }

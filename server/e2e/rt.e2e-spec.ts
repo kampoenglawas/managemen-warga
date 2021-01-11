@@ -4,7 +4,7 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import RT from '../src/domain/rt.entity';
+import { RTDTO } from '../src/service/dto/rt.dto';
 import { RTService } from '../src/service/rt.service';
 
 describe('RT Controller', () => {
@@ -21,7 +21,7 @@ describe('RT Controller', () => {
     findAndCount: (): any => [entityMock, 0],
     save: (): any => entityMock,
     update: (): any => entityMock,
-    delete: (): any => entityMock
+    deleteById: (): any => entityMock
   };
 
   beforeEach(async () => {
@@ -41,7 +41,7 @@ describe('RT Controller', () => {
   });
 
   it('/GET all rts ', async () => {
-    const getEntities: RT[] = (
+    const getEntities: RTDTO[] = (
       await request(app.getHttpServer())
         .get('/api/rts')
         .expect(200)
@@ -51,7 +51,7 @@ describe('RT Controller', () => {
   });
 
   it('/GET rts by id', async () => {
-    const getEntity: RT = (
+    const getEntity: RTDTO = (
       await request(app.getHttpServer())
         .get('/api/rts/' + entityMock.id)
         .expect(200)
@@ -61,7 +61,7 @@ describe('RT Controller', () => {
   });
 
   it('/POST create rts', async () => {
-    const createdEntity: RT = (
+    const createdEntity: RTDTO = (
       await request(app.getHttpServer())
         .post('/api/rts')
         .send(entityMock)
@@ -72,7 +72,7 @@ describe('RT Controller', () => {
   });
 
   it('/PUT update rts', async () => {
-    const updatedEntity: RT = (
+    const updatedEntity: RTDTO = (
       await request(app.getHttpServer())
         .put('/api/rts')
         .send(entityMock)
@@ -83,7 +83,7 @@ describe('RT Controller', () => {
   });
 
   it('/DELETE rts', async () => {
-    const deletedEntity: RT = (
+    const deletedEntity: RTDTO = (
       await request(app.getHttpServer())
         .delete('/api/rts/' + entityMock.id)
         .expect(204)

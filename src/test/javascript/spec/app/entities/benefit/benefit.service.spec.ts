@@ -58,8 +58,8 @@ describe('Service Tests', () => {
           {
             description: 'BBBBBB',
             type: 'BBBBBB',
-            frequency: 1,
             value: 1,
+            frequency: 1,
             repetition: 'BBBBBB'
           },
           elemDefault
@@ -79,8 +79,8 @@ describe('Service Tests', () => {
           {
             description: 'BBBBBB',
             type: 'BBBBBB',
-            frequency: 1,
             value: 1,
+            frequency: 1,
             repetition: 'BBBBBB'
           },
           elemDefault

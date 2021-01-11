@@ -1,7 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindManyOptions, FindOneOptions } from 'typeorm';
-import FamilyMember from '../domain/family-member.entity';
+import { FamilyMemberDTO } from '../service/dto/family-member.dto';
+import { FamilyMemberMapper } from '../service/mapper/family-member.mapper';
 import { FamilyMemberRepository } from '../repository/family-member.repository';
 
 const relationshipNames = [];
@@ -13,29 +14,46 @@ export class FamilyMemberService {
 
   constructor(@InjectRepository(FamilyMemberRepository) private familyMemberRepository: FamilyMemberRepository) {}
 
-  async findById(id: string): Promise<FamilyMember | undefined> {
+  async findById(id: string): Promise<FamilyMemberDTO | undefined> {
     const options = { relations: relationshipNames };
-    return await this.familyMemberRepository.findOne(id, options);
+    const result = await this.familyMemberRepository.findOne(id, options);
+    return FamilyMemberMapper.fromEntityToDTO(result);
   }
 
-  async findByfields(options: FindOneOptions<FamilyMember>): Promise<FamilyMember | undefined> {
-    return await this.familyMemberRepository.findOne(options);
+  async findByfields(options: FindOneOptions<FamilyMemberDTO>): Promise<FamilyMemberDTO | undefined> {
+    const result = await this.familyMemberRepository.findOne(options);
+    return FamilyMemberMapper.fromEntityToDTO(result);
   }
 
-  async findAndCount(options: FindManyOptions<FamilyMember>): Promise<[FamilyMember[], number]> {
+  async findAndCount(options: FindManyOptions<FamilyMemberDTO>): Promise<[FamilyMemberDTO[], number]> {
     options.relations = relationshipNames;
-    return await this.familyMemberRepository.findAndCount(options);
+    const resultList = await this.familyMemberRepository.findAndCount(options);
+    const familyMemberDTO: FamilyMemberDTO[] = [];
+    if (resultList && resultList[0]) {
+      resultList[0].forEach(familyMember => familyMemberDTO.push(FamilyMemberMapper.fromEntityToDTO(familyMember)));
+      resultList[0] = familyMemberDTO;
+    }
+    return resultList;
   }
 
-  async save(familyMember: FamilyMember): Promise<FamilyMember | undefined> {
-    return await this.familyMemberRepository.save(familyMember);
+  async save(familyMemberDTO: FamilyMemberDTO): Promise<FamilyMemberDTO | undefined> {
+    const entity = FamilyMemberMapper.fromDTOtoEntity(familyMemberDTO);
+    const result = await this.familyMemberRepository.save(entity);
+    return FamilyMemberMapper.fromEntityToDTO(result);
   }
 
-  async update(familyMember: FamilyMember): Promise<FamilyMember | undefined> {
-    return await this.save(familyMember);
+  async update(familyMemberDTO: FamilyMemberDTO): Promise<FamilyMemberDTO | undefined> {
+    const entity = FamilyMemberMapper.fromDTOtoEntity(familyMemberDTO);
+    const result = await this.familyMemberRepository.save(entity);
+    return FamilyMemberMapper.fromEntityToDTO(result);
   }
 
-  async delete(familyMember: FamilyMember): Promise<FamilyMember | undefined> {
-    return await this.familyMemberRepository.remove(familyMember);
+  async deleteById(id: string): Promise<void | undefined> {
+    await this.familyMemberRepository.delete(id);
+    const entityFind = await this.findById(id);
+    if (entityFind) {
+      throw new HttpException('Error, entity not deleted!', HttpStatus.NOT_FOUND);
+    }
+    return;
   }
 }

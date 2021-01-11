@@ -1,4 +1,0 @@
-diff a/src/main/webapp/app/layouts/navbar/navbar.component.ts b/src/main/webapp/app/layouts/navbar/navbar.component.ts	(rejected hunks)
-@@ -16 +16 @@ import { ProfileService } from 'app/layouts/profiles/profile.service';
--  styleUrls: ['navbar.scss'],
-+  styleUrls: ['navbar.scss']

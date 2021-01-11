@@ -27,7 +27,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20210109134600",
+    "changelogDate": "20210111133300",
     "entityTableName": "family_member",
     "dto": "no",
     "pagination": "pagination",

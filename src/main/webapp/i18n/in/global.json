@@ -1,12 +1,11 @@
 {
   "global": {
-    "title": "Sistem Pengelolaan Data Warga",
+    "title": "CivilianManagement",
     "browsehappy": "Anda menggunakan peramban versi lama. Silakan <a href=\"http://browsehappy.com/?locale=en\">perbaharui peramban anda</a> untuk meningkatkan kenyamanan anda.",
     "menu": {
       "home": "Beranda",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Entitas",
         "rt": "RT",
         "civilian": "Daftar Warga",
         "benefit": "Daftar Manfaat",
@@ -14,7 +13,6 @@
         "family": "Daftar Keluarga",
         "residence": "Daftar Tempat Tinggal",
         "povertyCivilian": "Warga Tidak Mampu",
-
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
