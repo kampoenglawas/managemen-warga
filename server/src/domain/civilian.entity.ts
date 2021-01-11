@@ -7,6 +7,7 @@ import { validate, Contains, IsInt, Length, IsEmail, IsFQDN, IsDate, Min, Max } 
 
 import Benefit from './benefit.entity';
 import FamilyMember from './family-member.entity';
+import PovertyCivilian from './poverty-civilian.entity';
 import Residence from './residence.entity';
 import { Gender } from './enumeration/gender';
 import { MemberStatus } from './enumeration/member-status';
@@ -52,12 +53,21 @@ export default class Civilian extends BaseEntity {
   @JoinTable({
     name: 'civilian_benefit',
     joinColumn: { name: 'civilian_id', referencedColumnName: 'id' },
-    inverseJoinColumn: { name: 'benefit_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'benefit_id', referencedColumnName: 'id' }
   })
   benefits: Benefit[];
 
-  @OneToOne(type => FamilyMember, other => other.civilian)
+  @OneToOne(
+    type => FamilyMember,
+    other => other.civilian
+  )
   familyMember: FamilyMember;
+
+  @OneToOne(
+    type => PovertyCivilian,
+    other => other.civilian
+  )
+  povertyCivilian: PovertyCivilian;
 
   @ManyToOne(type => Residence)
   residence: Residence;

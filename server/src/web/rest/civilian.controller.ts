@@ -23,14 +23,14 @@ export class CivilianController {
   @ApiResponse({
     status: 200,
     description: 'List all records',
-    type: Civilian,
+    type: Civilian
   })
   async getAll(@Req() req: Request): Promise<Civilian[]> {
     const pageRequest: PageRequest = new PageRequest(req.query.page, req.query.size, req.query.sort);
     const [results, count] = await this.civilianService.findAndCount({
       skip: +pageRequest.page * pageRequest.size,
       take: +pageRequest.size,
-      order: pageRequest.sort.asOrder(),
+      order: pageRequest.sort.asOrder()
     });
     HeaderUtil.addPaginationHeaders(req.res, new Page(results, count, pageRequest));
     return results;
@@ -41,7 +41,7 @@ export class CivilianController {
   @ApiResponse({
     status: 200,
     description: 'The found record',
-    type: Civilian,
+    type: Civilian
   })
   async getOne(@Param('id') id: string): Promise<Civilian> {
     return await this.civilianService.findById(id);
@@ -53,7 +53,7 @@ export class CivilianController {
   @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
-    type: Civilian,
+    type: Civilian
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   async post(@Req() req: Request, @Body() civilian: Civilian): Promise<Civilian> {
@@ -68,7 +68,7 @@ export class CivilianController {
   @ApiResponse({
     status: 200,
     description: 'The record has been successfully updated.',
-    type: Civilian,
+    type: Civilian
   })
   async put(@Req() req: Request, @Body() civilian: Civilian): Promise<Civilian> {
     HeaderUtil.addEntityCreatedHeaders(req.res, 'Civilian', civilian.id);
@@ -80,7 +80,7 @@ export class CivilianController {
   @ApiOperation({ title: 'Delete civilian' })
   @ApiResponse({
     status: 204,
-    description: 'The record has been successfully deleted.',
+    description: 'The record has been successfully deleted.'
   })
   async remove(@Req() req: Request, @Param('id') id: string): Promise<Civilian> {
     HeaderUtil.addEntityDeletedHeaders(req.res, 'Civilian', id);

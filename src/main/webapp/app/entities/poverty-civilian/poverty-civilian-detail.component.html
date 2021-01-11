@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="povertyCivilian">
+            <h2><span jhiTranslate="civilianManagementApp.povertyCivilian.detail.title">Poverty Civilian</span> {{ povertyCivilian.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="civilianManagementApp.povertyCivilian.reason">Reason</span></dt>
+                <dd>
+                    <span>{{ povertyCivilian.reason }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.povertyCivilian.civilian">Civilian</span></dt>
+                <dd>
+                    <div *ngIf="povertyCivilian.civilian">
+                        <a [routerLink]="['/civilian', povertyCivilian.civilian?.id, 'view']">{{ povertyCivilian.civilian?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/poverty-civilian', povertyCivilian.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

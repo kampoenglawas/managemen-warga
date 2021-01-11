@@ -8,6 +8,6 @@ import { CivilianService } from '../service/civilian.service';
   imports: [TypeOrmModule.forFeature([CivilianRepository])],
   controllers: [CivilianController],
   providers: [CivilianService],
-  exports: [CivilianService],
+  exports: [CivilianService]
 })
 export class CivilianModule {}

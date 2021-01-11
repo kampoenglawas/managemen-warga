@@ -9,7 +9,7 @@
             ]
         },
         {
-            "fieldName": "fullAddress",
+            "fieldName": "bloc",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

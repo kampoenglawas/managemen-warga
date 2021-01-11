@@ -13,6 +13,7 @@
         "familyMember": "Family Member",
         "family": "Family",
         "residence": "Residence",
+        "povertyCivilian": "Poverty Civilian",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

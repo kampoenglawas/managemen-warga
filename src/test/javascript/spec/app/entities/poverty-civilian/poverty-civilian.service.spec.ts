@@ -1,15 +1,15 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ResidenceService } from 'app/entities/residence/residence.service';
-import { IResidence, Residence } from 'app/shared/model/residence.model';
+import { PovertyCivilianService } from 'app/entities/poverty-civilian/poverty-civilian.service';
+import { IPovertyCivilian, PovertyCivilian } from 'app/shared/model/poverty-civilian.model';
 
 describe('Service Tests', () => {
-  describe('Residence Service', () => {
+  describe('PovertyCivilian Service', () => {
     let injector: TestBed;
-    let service: ResidenceService;
+    let service: PovertyCivilianService;
     let httpMock: HttpTestingController;
-    let elemDefault: IResidence;
-    let expectedResult: IResidence | IResidence[] | boolean | null;
+    let elemDefault: IPovertyCivilian;
+    let expectedResult: IPovertyCivilian | IPovertyCivilian[] | boolean | null;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -17,10 +17,10 @@ describe('Service Tests', () => {
       });
       expectedResult = null;
       injector = getTestBed();
-      service = injector.get(ResidenceService);
+      service = injector.get(PovertyCivilianService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Residence(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new PovertyCivilian(0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -34,7 +34,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject(elemDefault);
       });
 
-      it('should create a Residence', () => {
+      it('should create a PovertyCivilian', () => {
         const returnedFromService = Object.assign(
           {
             id: 0
@@ -44,19 +44,17 @@ describe('Service Tests', () => {
 
         const expected = Object.assign({}, returnedFromService);
 
-        service.create(new Residence()).subscribe(resp => (expectedResult = resp.body));
+        service.create(new PovertyCivilian()).subscribe(resp => (expectedResult = resp.body));
 
         const req = httpMock.expectOne({ method: 'POST' });
         req.flush(returnedFromService);
         expect(expectedResult).toMatchObject(expected);
       });
 
-      it('should update a Residence', () => {
+      it('should update a PovertyCivilian', () => {
         const returnedFromService = Object.assign(
           {
-            no: 'BBBBBB',
-            bloc: 'BBBBBB',
-            description: 'BBBBBB'
+            reason: 'BBBBBB'
           },
           elemDefault
         );
@@ -70,12 +68,10 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject(expected);
       });
 
-      it('should return a list of Residence', () => {
+      it('should return a list of PovertyCivilian', () => {
         const returnedFromService = Object.assign(
           {
-            no: 'BBBBBB',
-            bloc: 'BBBBBB',
-            description: 'BBBBBB'
+            reason: 'BBBBBB'
           },
           elemDefault
         );
@@ -90,7 +86,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toContainEqual(expected);
       });
 
-      it('should delete a Residence', () => {
+      it('should delete a PovertyCivilian', () => {
         service.delete(123).subscribe(resp => (expectedResult = resp.ok));
 
         const req = httpMock.expectOne({ method: 'DELETE' });

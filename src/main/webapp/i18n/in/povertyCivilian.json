@@ -1,0 +1,23 @@
+{
+  "civilianManagementApp": {
+    "povertyCivilian": {
+      "home": {
+        "title": "Poverty Civilians",
+        "createLabel": "Buat Poverty Civilian baru",
+        "createOrEditLabel": "Buat atau edit Poverty Civilian",
+        "notFound": "No Poverty Civilians found"
+      },
+      "created": "Poverty Civilian dengan id {{ param }} telah dibuat",
+      "updated": "Poverty Civilian dengan id {{ param }} telah diperbaharui",
+      "deleted": "Poverty Civilian dengan id {{ param }} telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Poverty Civilian {{ id }}?"
+      },
+      "detail": {
+        "title": "Poverty Civilian"
+      },
+      "reason": "Reason",
+      "civilian": "Civilian"
+    }
+  }
+}

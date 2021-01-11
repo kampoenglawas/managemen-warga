@@ -4,10 +4,10 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import Civilian from '../src/domain/civilian.entity';
-import { CivilianService } from '../src/service/civilian.service';
+import PovertyCivilian from '../src/domain/poverty-civilian.entity';
+import { PovertyCivilianService } from '../src/service/poverty-civilian.service';
 
-describe('Civilian Controller', () => {
+describe('PovertyCivilian Controller', () => {
   let app: INestApplication;
 
   const authGuardMock = { canActivate: (): any => true };
@@ -32,7 +32,7 @@ describe('Civilian Controller', () => {
       .useValue(authGuardMock)
       .overrideGuard(RolesGuard)
       .useValue(rolesGuardMock)
-      .overrideProvider(CivilianService)
+      .overrideProvider(PovertyCivilianService)
       .useValue(serviceMock)
       .compile();
 
@@ -40,30 +40,30 @@ describe('Civilian Controller', () => {
     await app.init();
   });
 
-  it('/GET all civilians ', async () => {
-    const getEntities: Civilian[] = (
+  it('/GET all poverty-civilians ', async () => {
+    const getEntities: PovertyCivilian[] = (
       await request(app.getHttpServer())
-        .get('/api/civilians')
+        .get('/api/poverty-civilians')
         .expect(200)
     ).body;
 
     expect(getEntities).toEqual(entityMock);
   });
 
-  it('/GET civilians by id', async () => {
-    const getEntity: Civilian = (
+  it('/GET poverty-civilians by id', async () => {
+    const getEntity: PovertyCivilian = (
       await request(app.getHttpServer())
-        .get('/api/civilians/' + entityMock.id)
+        .get('/api/poverty-civilians/' + entityMock.id)
         .expect(200)
     ).body;
 
     expect(getEntity).toEqual(entityMock);
   });
 
-  it('/POST create civilians', async () => {
-    const createdEntity: Civilian = (
+  it('/POST create poverty-civilians', async () => {
+    const createdEntity: PovertyCivilian = (
       await request(app.getHttpServer())
-        .post('/api/civilians')
+        .post('/api/poverty-civilians')
         .send(entityMock)
         .expect(201)
     ).body;
@@ -71,10 +71,10 @@ describe('Civilian Controller', () => {
     expect(createdEntity).toEqual(entityMock);
   });
 
-  it('/PUT update civilians', async () => {
-    const updatedEntity: Civilian = (
+  it('/PUT update poverty-civilians', async () => {
+    const updatedEntity: PovertyCivilian = (
       await request(app.getHttpServer())
-        .put('/api/civilians')
+        .put('/api/poverty-civilians')
         .send(entityMock)
         .expect(201)
     ).body;
@@ -82,10 +82,10 @@ describe('Civilian Controller', () => {
     expect(updatedEntity).toEqual(entityMock);
   });
 
-  it('/DELETE civilians', async () => {
-    const deletedEntity: Civilian = (
+  it('/DELETE poverty-civilians', async () => {
+    const deletedEntity: PovertyCivilian = (
       await request(app.getHttpServer())
-        .delete('/api/civilians/' + entityMock.id)
+        .delete('/api/poverty-civilians/' + entityMock.id)
         .expect(204)
     ).body;
 

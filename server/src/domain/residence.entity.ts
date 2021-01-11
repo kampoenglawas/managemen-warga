@@ -16,8 +16,8 @@ export default class Residence extends BaseEntity {
   @Column({ name: 'no' })
   no: string;
 
-  @Column({ name: 'full_address' })
-  fullAddress: string;
+  @Column({ name: 'bloc' })
+  bloc: string;
 
   @Column({ name: 'description', nullable: true })
   description: string;

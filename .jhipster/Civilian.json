@@ -1,107 +1,114 @@
 {
-  "name": "Civilian",
-  "fields": [
-    {
-      "fieldName": "name",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "identityNo",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "minlength",
-        "maxlength"
-      ],
-      "fieldValidateRulesMinlength": "16",
-      "fieldValidateRulesMaxlength": "16"
-    },
-    {
-      "fieldName": "identityCardImage",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "image"
-    },
-    {
-      "fieldName": "dateOfBirth",
-      "fieldType": "LocalDate",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "placeOfBirth",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "contact",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "gender",
-      "fieldType": "Gender",
-      "fieldValues": "Male,Female,Other",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "status",
-      "fieldType": "MemberStatus",
-      "fieldValues": "PassAway,Moving,Active",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
-      "fieldName": "additionalInfo",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "yearlyIncome",
-      "fieldType": "BigDecimal"
-    }
-  ],
-  "relationships": [
-    {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "benefit",
-      "otherEntityRelationshipName": "civilian",
-      "relationshipName": "benefit",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "familyMember",
-      "otherEntityRelationshipName": "civilian",
-      "relationshipName": "familyMember",
-      "ownerSide": false
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "residence",
-      "otherEntityRelationshipName": "member",
-      "relationshipName": "residence",
-      "otherEntityField": "id"
-    }
-  ],
-  "changelogDate": "20210109134400",
-  "entityTableName": "civilian",
-  "dto": "no",
-  "pagination": "pagination",
-  "service": "no",
-  "jpaMetamodelFiltering": false,
-  "fluentMethods": true,
-  "readOnly": false,
-  "embedded": false,
-  "clientRootFolder": "",
-  "applications": "*"
+    "name": "Civilian",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "identityNo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "16",
+            "fieldValidateRulesMaxlength": "16"
+        },
+        {
+            "fieldName": "identityCardImage",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "dateOfBirth",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "placeOfBirth",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "contact",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "Male,Female,Other",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "MemberStatus",
+            "fieldValues": "PassAway,Moving,Active",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "additionalInfo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "yearlyIncome",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "benefit",
+            "otherEntityRelationshipName": "civilian",
+            "relationshipName": "benefit",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "familyMember",
+            "otherEntityRelationshipName": "civilian",
+            "relationshipName": "familyMember",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "povertyCivilian",
+            "otherEntityRelationshipName": "civilian",
+            "relationshipName": "povertyCivilian",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "residence",
+            "otherEntityRelationshipName": "member",
+            "relationshipName": "residence",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20210109134400",
+    "entityTableName": "civilian",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
 }

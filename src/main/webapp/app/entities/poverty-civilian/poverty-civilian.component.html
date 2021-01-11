@@ -1,11 +1,11 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="civilianManagementApp.residence.home.title">Residences</span>
+        <span jhiTranslate="civilianManagementApp.povertyCivilian.home.title">Poverty Civilians</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-residence" [routerLink]="['/residence/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-poverty-civilian" [routerLink]="['/poverty-civilian/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="civilianManagementApp.residence.home.createLabel">
-            Create a new Residence
+            <span  jhiTranslate="civilianManagementApp.povertyCivilian.home.createLabel">
+            Create a new Poverty Civilian
             </span>
         </button>
     </h2>
@@ -14,50 +14,46 @@
 
     <jhi-alert></jhi-alert>
 
-    <div class="alert alert-warning" id="no-result" *ngIf="residences?.length === 0">
-        <span jhiTranslate="civilianManagementApp.residence.home.notFound">No residences found</span>
+    <div class="alert alert-warning" id="no-result" *ngIf="povertyCivilians?.length === 0">
+        <span jhiTranslate="civilianManagementApp.povertyCivilian.home.notFound">No povertyCivilians found</span>
     </div>
 
-    <div class="table-responsive" id="entities" *ngIf="residences?.length > 0">
+    <div class="table-responsive" id="entities" *ngIf="povertyCivilians?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="no"><span jhiTranslate="civilianManagementApp.residence.no">No</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="bloc"><span jhiTranslate="civilianManagementApp.residence.bloc">Bloc</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="civilianManagementApp.residence.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="rT.id"><span jhiTranslate="civilianManagementApp.residence.rT">R T</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="reason"><span jhiTranslate="civilianManagementApp.povertyCivilian.reason">Reason</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="civilian.id"><span jhiTranslate="civilianManagementApp.povertyCivilian.civilian">Civilian</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let residence of residences ;trackBy: trackId">
-                    <td><a [routerLink]="['/residence', residence.id, 'view']">{{ residence.id }}</a></td>
-                    <td>{{ residence.no }}</td>
-                    <td>{{ residence.bloc }}</td>
-                    <td>{{ residence.description }}</td>
+                <tr *ngFor="let povertyCivilian of povertyCivilians ;trackBy: trackId">
+                    <td><a [routerLink]="['/poverty-civilian', povertyCivilian.id, 'view']">{{ povertyCivilian.id }}</a></td>
+                    <td>{{ povertyCivilian.reason }}</td>
                     <td>
-                        <div *ngIf="residence.rT">
-                            <a [routerLink]="['/rt', residence.rT?.id, 'view']" >{{ residence.rT?.id }}</a>
+                        <div *ngIf="povertyCivilian.civilian">
+                            <a [routerLink]="['/civilian', povertyCivilian.civilian?.id, 'view']" >{{ povertyCivilian.civilian?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
-                                    [routerLink]="['/residence', residence.id, 'view']"
+                                    [routerLink]="['/poverty-civilian', povertyCivilian.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
 
                             <button type="submit"
-                                    [routerLink]="['/residence', residence.id, 'edit']"
+                                    [routerLink]="['/poverty-civilian', povertyCivilian.id, 'edit']"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
-                            <button type="submit" (click)="delete(residence)"
+                            <button type="submit" (click)="delete(povertyCivilian)"
                                     class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
@@ -69,7 +65,7 @@
         </table>
     </div>
 
-    <div *ngIf="residences?.length > 0">
+    <div *ngIf="povertyCivilians?.length > 0">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>

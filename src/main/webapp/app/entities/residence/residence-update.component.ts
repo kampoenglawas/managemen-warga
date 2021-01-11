@@ -21,7 +21,7 @@ export class ResidenceUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     no: [null, [Validators.required]],
-    fullAddress: [null, [Validators.required]],
+    bloc: [null, [Validators.required]],
     description: [],
     rT: []
   });
@@ -45,7 +45,7 @@ export class ResidenceUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: residence.id,
       no: residence.no,
-      fullAddress: residence.fullAddress,
+      bloc: residence.bloc,
       description: residence.description,
       rT: residence.rT
     });
@@ -70,7 +70,7 @@ export class ResidenceUpdateComponent implements OnInit {
       ...new Residence(),
       id: this.editForm.get(['id'])!.value,
       no: this.editForm.get(['no'])!.value,
-      fullAddress: this.editForm.get(['fullAddress'])!.value,
+      bloc: this.editForm.get(['bloc'])!.value,
       description: this.editForm.get(['description'])!.value,
       rT: this.editForm.get(['rT'])!.value
     };

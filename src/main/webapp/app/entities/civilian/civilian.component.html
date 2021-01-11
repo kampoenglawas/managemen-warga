@@ -57,7 +57,7 @@
                     <td>{{ civilian.yearlyIncome }}</td>
                     <td>
                         <div *ngIf="civilian.residence">
-                            <a [routerLink]="['/residence', civilian.residence?.id, 'view']" >{{ civilian.residence?.fullAddress }}</a>
+                            <a [routerLink]="['/residence', civilian.residence?.id, 'view']" >{{ civilian.residence?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">

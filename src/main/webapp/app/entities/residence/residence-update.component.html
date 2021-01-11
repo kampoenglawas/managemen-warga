@@ -24,12 +24,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="civilianManagementApp.residence.fullAddress" for="field_fullAddress">Full Address</label>
-                    <input type="text" class="form-control" name="fullAddress" id="field_fullAddress"
-                           formControlName="fullAddress"/>
-                    <div *ngIf="editForm.get('fullAddress')!.invalid && (editForm.get('fullAddress')!.dirty || editForm.get('fullAddress')!.touched)">
+                    <label class="form-control-label" jhiTranslate="civilianManagementApp.residence.bloc" for="field_bloc">Bloc</label>
+                    <input type="text" class="form-control" name="bloc" id="field_bloc"
+                           formControlName="bloc"/>
+                    <div *ngIf="editForm.get('bloc')!.invalid && (editForm.get('bloc')!.dirty || editForm.get('bloc')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('fullAddress')?.errors?.required" jhiTranslate="entity.validation.required">
+                               *ngIf="editForm.get('bloc')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>

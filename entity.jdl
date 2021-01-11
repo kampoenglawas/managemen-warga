@@ -33,6 +33,10 @@ entity RT {
   name String
 }
 
+entity PovertyCivilian {
+  reason TextBlob
+}
+
 entity Civilian {
   name String required
   identityNo String minlength(16) maxlength(16)
@@ -66,7 +70,7 @@ entity Family {
 
 entity Residence {
 	no String required
-    fullAddress String required
+    bloc String required
     description String
 }
 
@@ -82,6 +86,7 @@ relationship ManyToMany {
 
 relationship OneToOne {
    FamilyMember to Civilian
+   PovertyCivilian to Civilian
 }
 
 paginate * with pagination

@@ -1,0 +1,31 @@
+{
+    "name": "PovertyCivilian",
+    "fields": [
+        {
+            "fieldName": "reason",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "civilian",
+            "otherEntityRelationshipName": "povertyCivilian",
+            "relationshipName": "civilian",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20210111083900",
+    "entityTableName": "poverty_civilian",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

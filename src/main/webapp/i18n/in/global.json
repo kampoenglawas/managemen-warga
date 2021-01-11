@@ -13,6 +13,8 @@
         "familyMember": "Daftar Anggota Keluarga",
         "family": "Daftar Keluarga",
         "residence": "Daftar Tempat Tinggal",
+        "povertyCivilian": "Poverty Civilian",
+        "civilian": "Civilian",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { IBenefit } from 'app/shared/model/benefit.model';
 import { IFamilyMember } from 'app/shared/model/family-member.model';
+import { IPovertyCivilian } from 'app/shared/model/poverty-civilian.model';
 import { IResidence } from 'app/shared/model/residence.model';
 import { Gender } from 'app/shared/model/enumerations/gender.model';
 import { MemberStatus } from 'app/shared/model/enumerations/member-status.model';
@@ -20,6 +21,7 @@ export interface ICivilian {
   yearlyIncome?: number;
   benefits?: IBenefit[];
   familyMember?: IFamilyMember;
+  povertyCivilian?: IPovertyCivilian;
   residence?: IResidence;
 }
 
@@ -39,6 +41,7 @@ export class Civilian implements ICivilian {
     public yearlyIncome?: number,
     public benefits?: IBenefit[],
     public familyMember?: IFamilyMember,
+    public povertyCivilian?: IPovertyCivilian,
     public residence?: IResidence
   ) {}
 }
