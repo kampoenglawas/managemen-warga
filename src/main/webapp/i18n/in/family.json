@@ -5,7 +5,7 @@
         "title": "Daftar Keluarga",
         "createLabel": "Buat Keluarga baru",
         "createOrEditLabel": "Buat atau edit Keluarga",
-        "notFound": "No Daftar Keluarga found"
+        "notFound": "Data Belum Tersedia"
       },
       "created": "Keluarga dengan id {{ param }} telah dibuat",
       "updated": "Keluarga dengan id {{ param }} telah diperbaharui",
@@ -17,7 +17,7 @@
         "title": "Keluarga"
       },
       "familyCardNo": "Nomor Kartu Keluarga",
-      "familyCardImage": "Nomor Kartu Keluarga",
+      "familyCardImage": "Foto Kartu Keluarga",
       "fullAddress": "Alamat Tinggal Lengkap",
       "member": "Anggota Keluarga"
     }

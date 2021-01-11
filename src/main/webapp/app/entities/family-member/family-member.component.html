@@ -35,12 +35,12 @@
                     <td jhiTranslate="{{ 'civilianManagementApp.FamilyRole.' + familyMember.role }}">{{ familyMember.role }}</td>
                     <td>
                         <div *ngIf="familyMember.civilian">
-                            <a [routerLink]="['/civilian', familyMember.civilian?.id, 'view']" >{{ familyMember.civilian?.id }}</a>
+                            <a [routerLink]="['/civilian', familyMember.civilian?.id, 'view']" >{{ familyMember.civilian?.name }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="familyMember.family">
-                            <a [routerLink]="['/family', familyMember.family?.id, 'view']" >{{ familyMember.family?.id }}</a>
+                            <a [routerLink]="['/family', familyMember.family?.id, 'view']" >{{ familyMember.family?.familyCardNo }}</a>
                         </div>
                     </td>
                     <td class="text-right">

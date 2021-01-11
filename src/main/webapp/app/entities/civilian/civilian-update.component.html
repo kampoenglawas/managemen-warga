@@ -142,7 +142,7 @@
                 <div class="form-group">
                     <label jhiTranslate="civilianManagementApp.civilian.benefit" for="field_benefits">Benefit</label>
                     <select class="form-control" id="field_benefits" multiple name="benefits" formControlName="benefits">
-                        <option [ngValue]="getSelected(editForm.get('benefits')!.value, benefitOption)" *ngFor="let benefitOption of benefits; trackBy: trackById">{{ benefitOption.id }}</option>
+                        <option [ngValue]="getSelected(editForm.get('benefits')!.value, benefitOption)" *ngFor="let benefitOption of benefits; trackBy: trackById">{{ benefitOption.description }}</option>
                     </select>
                 </div>
 
@@ -150,7 +150,7 @@
                     <label class="form-control-label" jhiTranslate="civilianManagementApp.civilian.residence" for="field_residence">Residence</label>
                     <select class="form-control" id="field_residence" name="residence" formControlName="residence">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="residenceOption.id === editForm.get('residence')!.value?.id ? editForm.get('residence')!.value : residenceOption" *ngFor="let residenceOption of residences; trackBy: trackById">{{ residenceOption.id }}</option>
+                        <option [ngValue]="residenceOption.id === editForm.get('residence')!.value?.id ? editForm.get('residence')!.value : residenceOption" *ngFor="let residenceOption of residences; trackBy: trackById">jln Maspati Gg. {{ residenceOption.bloc }} No. {{residenceOption.no}}</option>
                     </select>
                 </div>
             </div>

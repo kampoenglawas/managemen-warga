@@ -5,13 +5,13 @@
         "title": "Manfaat",
         "createLabel": "Buat manfaat baru",
         "createOrEditLabel": "Buat atau edit manfaat",
-        "notFound": "No manfaat found"
+        "notFound": "Data Belum Tersedia"
       },
-      "created": "Manfaat dengan id {{ param }} telah dibuat",
-      "updated": "Manfaat dengan id {{ param }} telah diperbaharui",
-      "deleted": "Manfaat dengan id {{ param }} telah dihapus",
+      "created": "Manfaat dengan id {{ param }} berhasil dibuat",
+      "updated": "Manfaat dengan id {{ param }} berhasil diperbaharui",
+      "deleted": "Manfaat dengan id {{ param }} berhasil dihapus",
       "delete": {
-        "question": "Apakah anda yakin ingin menghapus manfaat {{ id }}?"
+        "question": "Apakah anda yakin ingin menghapus manfaat dengan id {{ id }}?"
       },
       "detail": {
         "title": "Manfaat"

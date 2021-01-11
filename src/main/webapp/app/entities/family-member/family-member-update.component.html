@@ -30,7 +30,7 @@
                     <label class="form-control-label" jhiTranslate="civilianManagementApp.familyMember.civilian" for="field_civilian">Civilian</label>
                     <select class="form-control" id="field_civilian" name="civilian" formControlName="civilian">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="civilianOption.id === editForm.get('civilian')!.value?.id ? editForm.get('civilian')!.value : civilianOption" *ngFor="let civilianOption of civilians; trackBy: trackById">{{ civilianOption.id }}</option>
+                        <option [ngValue]="civilianOption.id === editForm.get('civilian')!.value?.id ? editForm.get('civilian')!.value : civilianOption" *ngFor="let civilianOption of civilians; trackBy: trackById">{{ civilianOption.name}}</option>
                     </select>
                 </div>
 
@@ -38,7 +38,7 @@
                     <label class="form-control-label" jhiTranslate="civilianManagementApp.familyMember.family" for="field_family">Family</label>
                     <select class="form-control" id="field_family" name="family" formControlName="family">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="familyOption.id === editForm.get('family')!.value?.id ? editForm.get('family')!.value : familyOption" *ngFor="let familyOption of families; trackBy: trackById">{{ familyOption.id }}</option>
+                        <option [ngValue]="familyOption.id === editForm.get('family')!.value?.id ? editForm.get('family')!.value : familyOption" *ngFor="let familyOption of families; trackBy: trackById">{{ familyOption.familyCardNo }}</option>
                     </select>
                 </div>
             </div>

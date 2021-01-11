@@ -23,7 +23,7 @@
                 <dt><span jhiTranslate="civilianManagementApp.residence.rT">R T</span></dt>
                 <dd>
                     <div *ngIf="residence.rT">
-                        <a [routerLink]="['/rt', residence.rT?.id, 'view']">{{ residence.rT?.id }}</a>
+                        <a [routerLink]="['/rt', residence.rT?.id, 'view']">{{ residence.rT?.name }}</a>
                     </div>
                 </dd>
             </dl>

@@ -45,7 +45,7 @@
                     <label class="form-control-label" jhiTranslate="civilianManagementApp.residence.rT" for="field_rT">R T</label>
                     <select class="form-control" id="field_rT" name="rT" formControlName="rT">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="rTOption.id === editForm.get('rT')!.value?.id ? editForm.get('rT')!.value : rTOption" *ngFor="let rTOption of rts; trackBy: trackById">{{ rTOption.id }}</option>
+                        <option [ngValue]="rTOption.id === editForm.get('rT')!.value?.id ? editForm.get('rT')!.value : rTOption" *ngFor="let rTOption of rts; trackBy: trackById">{{ rTOption.name }}</option>
                     </select>
                 </div>
             </div>

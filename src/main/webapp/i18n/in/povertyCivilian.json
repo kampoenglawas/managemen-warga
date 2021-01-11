@@ -2,22 +2,22 @@
   "civilianManagementApp": {
     "povertyCivilian": {
       "home": {
-        "title": "Poverty Civilians",
-        "createLabel": "Buat Poverty Civilian baru",
-        "createOrEditLabel": "Buat atau edit Poverty Civilian",
-        "notFound": "No Poverty Civilians found"
+        "title": "Daftar warga tidak mampu",
+        "createLabel": "Masukkan data warga tidak mampu",
+        "createOrEditLabel": "Buat atau edit data warga tidak mampu",
+        "notFound": "Data belum tersedia"
       },
-      "created": "Poverty Civilian dengan id {{ param }} telah dibuat",
-      "updated": "Poverty Civilian dengan id {{ param }} telah diperbaharui",
-      "deleted": "Poverty Civilian dengan id {{ param }} telah dihapus",
+      "created": "Data warga tidak mampu dengan id {{ param }} Berhasil dibuat",
+      "updated": "Data warga tidak mampu dengan id {{ param }} Berhasil diperbaharui",
+      "deleted": "Data warga tidak mampu dengan id {{ param }} Berhasil dihapus",
       "delete": {
-        "question": "Apakah anda yakin ingin menghapus Poverty Civilian {{ id }}?"
+        "question": "Apakah anda yakin ingin menghapus data dengan id {{ id }}?"
       },
       "detail": {
-        "title": "Poverty Civilian"
+        "title": "Warga Tidak Mampu"
       },
-      "reason": "Reason",
-      "civilian": "Civilian"
+      "reason": "Alasan",
+      "civilian": "Warga"
     }
   }
 }

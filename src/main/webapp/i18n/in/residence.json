@@ -7,7 +7,7 @@
         "createOrEditLabel": "Buat atau edit Data Rumah/Tempat Tinggal",
         "notFound": "Data Rumah tidak ditemukan"
       },
-      "created": "Rumah/Tempat Tinggal dengan id {{ param }} berhasil didaftarkan",
+      "created": "Data Rumah/Tempat Tinggal dengan id {{ param }} berhasil didaftarkan",
       "updated": "Data Rumah/Tempat Tinggal dengan id {{ param }} telah diperbaharui",
       "deleted": "Data Rumah/Tempat Tinggal dengan id {{ param }} telah dihapus",
       "delete": {
@@ -19,7 +19,8 @@
       "no": "Nomor Rumah",
       "description": "Deskipsi",
       "member": "Penghuni",
-      "rT": "RT"
+      "rT": "RT",
+      "bloc": "Blok/Gang"
     }
   }
 }

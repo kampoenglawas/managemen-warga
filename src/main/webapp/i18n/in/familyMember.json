@@ -5,13 +5,13 @@
         "title": "Daftar Keanggotaan Keluarga",
         "createLabel": "Buat Keanggotaan Keluarga baru",
         "createOrEditLabel": "Buat atau edit Keanggotaan Keluarga",
-        "notFound": "No Keanggotaan Keluargas found"
+        "notFound": "Data Belum Tersedia"
       },
-      "created": "Keanggotaan Keluarga dengan id {{ param }} telah dibuat",
-      "updated": "Keanggotaan Keluarga dengan id {{ param }} telah diperbaharui",
-      "deleted": "Keanggotaan Keluarga dengan id {{ param }} telah dihapus",
+      "created": "Data Keanggotaan Keluarga dengan id {{ param }} telah dibuat",
+      "updated": "Data Keanggotaan Keluarga dengan id {{ param }} telah diperbaharui",
+      "deleted": "Data Keanggotaan Keluarga dengan id {{ param }} telah dihapus",
       "delete": {
-        "question": "Apakah anda yakin ingin menghapus Keanggotaan Keluarga {{ id }}?"
+        "question": "Apakah anda yakin ingin menghapus Data Keanggotaan Keluarga {{ id }}?"
       },
       "detail": {
         "title": "Keanggotaan Keluarga"

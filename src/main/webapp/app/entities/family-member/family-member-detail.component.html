@@ -15,13 +15,13 @@
                 <dt><span jhiTranslate="civilianManagementApp.familyMember.civilian">Civilian</span></dt>
                 <dd>
                     <div *ngIf="familyMember.civilian">
-                        <a [routerLink]="['/civilian', familyMember.civilian?.id, 'view']">{{ familyMember.civilian?.id }}</a>
+                        <a [routerLink]="['/civilian', familyMember.civilian?.id, 'view']">{{ familyMember.civilian?.name }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="civilianManagementApp.familyMember.family">Family</span></dt>
                 <dd>
                     <div *ngIf="familyMember.family">
-                        <a [routerLink]="['/family', familyMember.family?.id, 'view']">{{ familyMember.family?.id }}</a>
+                        <a [routerLink]="['/family', familyMember.family?.id, 'view']">{{ familyMember.family?.familyCardNo }}</a>
                     </div>
                 </dd>
             </dl>
