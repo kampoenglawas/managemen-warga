@@ -1,0 +1,4 @@
+diff a/src/main/webapp/app/core/language/language.constants.ts b/src/main/webapp/app/core/language/language.constants.ts	(rejected hunks)
+@@ -7 +7 @@ export const LANGUAGES: string[] = [
+-  'in',
++  'in'

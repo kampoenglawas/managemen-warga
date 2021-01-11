@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="familyMember">
+            <h2><span jhiTranslate="civilianManagementApp.familyMember.detail.title">Family Member</span> {{ familyMember.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="civilianManagementApp.familyMember.role">Role</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'civilianManagementApp.FamilyRole.' + familyMember.role }}">{{ familyMember.role }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.familyMember.civilian">Civilian</span></dt>
+                <dd>
+                    <div *ngIf="familyMember.civilian">
+                        <a [routerLink]="['/civilian', familyMember.civilian?.id, 'view']">{{ familyMember.civilian?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.familyMember.family">Family</span></dt>
+                <dd>
+                    <div *ngIf="familyMember.family">
+                        <a [routerLink]="['/family', familyMember.family?.id, 'view']">{{ familyMember.family?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/family-member', familyMember.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

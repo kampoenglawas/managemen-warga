@@ -1,0 +1,87 @@
+
+enum Gender {
+ Male,
+ Female,
+ Other
+}
+
+enum MemberStatus {
+  PassAway,
+  Moving,
+  Active
+}
+
+enum FamilyRole {
+  Father,
+  Mother,
+  Child
+}
+
+enum RepetitionType {
+	NoRepetition,
+	Month,
+    Year
+}
+
+enum BenefitType {
+  CASH,
+  SCHOLARSHIP,
+  OTHER
+}
+
+entity RT {
+  name String
+}
+
+entity Civilian {
+  name String required
+  identityNo String minlength(16) maxlength(16)
+  identityCardImage ImageBlob
+  dateOfBirth LocalDate required
+  placeOfBirth String required
+  contact String required
+  gender Gender required
+  status MemberStatus required
+  additionalInfo String
+  yearlyIncome BigDecimal
+
+}
+
+entity Benefit {
+  description String required
+  type BenefitType required
+  frequency Integer required
+  value BigDecimal
+  repetition RepetitionType required
+}
+
+entity FamilyMember {
+	role FamilyRole required
+}
+
+entity Family {
+	familyCardNo String required
+    familyCardImage ImageBlob
+}
+
+entity Residence {
+	no String required
+    fullAddress String required
+    description String
+}
+
+relationship OneToMany {
+	Family{member} to FamilyMember
+    Residence{member} to Civilian{residence}
+    RT to Residence
+}
+
+relationship ManyToMany {
+    Civilian{benefit} to Benefit{civilian}
+}
+
+relationship OneToOne {
+   FamilyMember to Civilian
+}
+
+paginate * with pagination

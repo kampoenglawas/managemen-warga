@@ -1,0 +1,27 @@
+{
+  "civilianManagementApp": {
+    "benefit": {
+      "home": {
+        "title": "Manfaat",
+        "createLabel": "Buat manfaat baru",
+        "createOrEditLabel": "Buat atau edit manfaat",
+        "notFound": "No manfaat found"
+      },
+      "created": "Manfaat dengan id {{ param }} telah dibuat",
+      "updated": "Manfaat dengan id {{ param }} telah diperbaharui",
+      "deleted": "Manfaat dengan id {{ param }} telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus manfaat {{ id }}?"
+      },
+      "detail": {
+        "title": "Manfaat"
+      },
+      "description": "Keterangan",
+      "type": "Tipe",
+      "frequency": "Frekuensi",
+      "value": "Nilai bantuan",
+      "repetition": "Pengulangan",
+      "civilian": "Warga"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+    "name": "Family",
+    "fields": [
+        {
+            "fieldName": "familyCardNo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "familyCardImage",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "familyMember",
+            "otherEntityRelationshipName": "family",
+            "relationshipName": "member"
+        }
+    ],
+    "changelogDate": "20210109134700",
+    "entityTableName": "family",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

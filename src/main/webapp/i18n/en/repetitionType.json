@@ -1,0 +1,10 @@
+{
+  "civilianManagementApp": {
+    "RepetitionType": {
+      "null": "",
+      "NoRepetition": "NoRepetition",
+      "Month": "Month",
+      "Year": "Year"
+    }
+  }
+}

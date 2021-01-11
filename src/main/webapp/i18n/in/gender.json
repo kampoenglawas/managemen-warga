@@ -1,0 +1,10 @@
+{
+  "civilianManagementApp": {
+    "Gender": {
+      "null": "",
+      "Male": "Laki-laki",
+      "Female": "Wanita",
+      "Other": "Lainnya"
+    }
+  }
+}

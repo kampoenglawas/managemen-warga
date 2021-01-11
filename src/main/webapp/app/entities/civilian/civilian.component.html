@@ -1,0 +1,100 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="civilianManagementApp.civilian.home.title">Civilians</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-civilian" [routerLink]="['/civilian/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="civilianManagementApp.civilian.home.createLabel">
+            Create a new Civilian
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="civilians?.length === 0">
+        <span jhiTranslate="civilianManagementApp.civilian.home.notFound">No civilians found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="civilians?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="civilianManagementApp.civilian.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="identityNo"><span jhiTranslate="civilianManagementApp.civilian.identityNo">Identity No</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="identityCardImage"><span jhiTranslate="civilianManagementApp.civilian.identityCardImage">Identity Card Image</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateOfBirth"><span jhiTranslate="civilianManagementApp.civilian.dateOfBirth">Date Of Birth</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="placeOfBirth"><span jhiTranslate="civilianManagementApp.civilian.placeOfBirth">Place Of Birth</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="contact"><span jhiTranslate="civilianManagementApp.civilian.contact">Contact</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gender"><span jhiTranslate="civilianManagementApp.civilian.gender">Gender</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="civilianManagementApp.civilian.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="additionalInfo"><span jhiTranslate="civilianManagementApp.civilian.additionalInfo">Additional Info</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="yearlyIncome"><span jhiTranslate="civilianManagementApp.civilian.yearlyIncome">Yearly Income</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="residence.id"><span jhiTranslate="civilianManagementApp.civilian.residence">Residence</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let civilian of civilians ;trackBy: trackId">
+                    <td><a [routerLink]="['/civilian', civilian.id, 'view']">{{ civilian.id }}</a></td>
+                    <td>{{ civilian.name }}</td>
+                    <td>{{ civilian.identityNo }}</td>
+                    <td>
+                        <a *ngIf="civilian.identityCardImage" (click)="openFile(civilian.identityCardImageContentType, civilian.identityCardImage)">
+                            <img [src]="'data:' + civilian.identityCardImageContentType + ';base64,' + civilian.identityCardImage" style="max-height: 30px;" alt="civilian image"/>
+                        </a>
+                        <span *ngIf="civilian.identityCardImage">{{ civilian.identityCardImageContentType }}, {{ byteSize(civilian.identityCardImage) }}</span>
+                    </td>
+                    <td>{{ civilian.dateOfBirth | date:'mediumDate' }}</td>
+                    <td>{{ civilian.placeOfBirth }}</td>
+                    <td>{{ civilian.contact }}</td>
+                    <td jhiTranslate="{{ 'civilianManagementApp.Gender.' + civilian.gender }}">{{ civilian.gender }}</td>
+                    <td jhiTranslate="{{ 'civilianManagementApp.MemberStatus.' + civilian.status }}">{{ civilian.status }}</td>
+                    <td>{{ civilian.additionalInfo }}</td>
+                    <td>{{ civilian.yearlyIncome }}</td>
+                    <td>
+                        <div *ngIf="civilian.residence">
+                            <a [routerLink]="['/residence', civilian.residence?.id, 'view']" >{{ civilian.residence?.fullAddress }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/civilian', civilian.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/civilian', civilian.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(civilian)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="civilians?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

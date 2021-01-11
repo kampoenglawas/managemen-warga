@@ -1,0 +1,33 @@
+diff a/src/main/webapp/app/core/core.module.ts b/src/main/webapp/app/core/core.module.ts	(rejected hunks)
+@@ -33 +33 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
+-      defaultI18nLang: 'en',
++      defaultI18nLang: 'en'
+@@ -39 +39 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
+-        deps: [HttpClient],
++        deps: [HttpClient]
+@@ -44,3 +44,3 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
+-        deps: [JhiConfigService],
+-      },
+-    }),
++        deps: [JhiConfigService]
++      }
++    })
+@@ -52 +52 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
+-      useValue: 'en',
++      useValue: 'en'
+@@ -59 +59 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
+-      multi: true,
++      multi: true
+@@ -64 +64 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
+-      multi: true,
++      multi: true
+@@ -69 +69 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
+-      multi: true,
++      multi: true
+@@ -74,3 +74,3 @@ import { fontAwesomeIcons } from './icons/font-awesome-icons';
+-      multi: true,
+-    },
+-  ],
++      multi: true
++    }
++  ]

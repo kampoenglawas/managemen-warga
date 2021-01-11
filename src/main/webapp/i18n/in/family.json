@@ -1,0 +1,25 @@
+{
+  "civilianManagementApp": {
+    "family": {
+      "home": {
+        "title": "Daftar Keluarga",
+        "createLabel": "Buat Keluarga baru",
+        "createOrEditLabel": "Buat atau edit Keluarga",
+        "notFound": "No Daftar Keluarga found"
+      },
+      "created": "Keluarga dengan id {{ param }} telah dibuat",
+      "updated": "Keluarga dengan id {{ param }} telah diperbaharui",
+      "deleted": "Keluarga dengan id {{ param }} telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Keluarga {{ id }}?"
+      },
+      "detail": {
+        "title": "Keluarga"
+      },
+      "familyCardNo": "Nomor Kartu Keluarga",
+      "familyCardImage": "Nomor Kartu Keluarga",
+      "fullAddress": "Alamat Tinggal Lengkap",
+      "member": "Anggota Keluarga"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+diff a/src/main/webapp/app/shared/shared-libs.module.ts b/src/main/webapp/app/shared/shared-libs.module.ts	(rejected hunks)
+@@ -19,2 +19,2 @@ import { TranslateModule } from '@ngx-translate/core';
+-    TranslateModule,
+-  ],
++    TranslateModule
++  ]

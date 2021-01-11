@@ -1,0 +1,10 @@
+{
+  "civilianManagementApp": {
+    "BenefitType": {
+      "null": "",
+      "CASH": "CASH",
+      "SCHOLARSHIP": "SCHOLARSHIP",
+      "OTHER": "OTHER"
+    }
+  }
+}

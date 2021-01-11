@@ -1,0 +1,23 @@
+{
+  "civilianManagementApp": {
+    "rT": {
+      "home": {
+        "title": "RTS",
+        "createLabel": "Create a new RT",
+        "createOrEditLabel": "Create or edit a RT",
+        "notFound": "No RTS found"
+      },
+      "created": "A new RT is created with identifier {{ param }}",
+      "updated": "A RT is updated with identifier {{ param }}",
+      "deleted": "A RT is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete RT {{ id }}?"
+      },
+      "detail": {
+        "title": "RT"
+      },
+      "name": "Name",
+      "residence": "Residence"
+    }
+  }
+}

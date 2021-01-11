@@ -1,0 +1,10 @@
+{
+  "civilianManagementApp": {
+    "BenefitType": {
+      "null": "",
+      "CASH": "Tunai",
+      "SCHOLARSHIP": "Beasiswa",
+      "OTHER": "Lainnya"
+    }
+  }
+}

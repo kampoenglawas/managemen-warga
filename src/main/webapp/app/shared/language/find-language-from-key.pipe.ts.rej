@@ -1,0 +1,4 @@
+diff a/src/main/webapp/app/shared/language/find-language-from-key.pipe.ts b/src/main/webapp/app/shared/language/find-language-from-key.pipe.ts	(rejected hunks)
+@@ -7 +7 @@ export class FindLanguageFromKeyPipe implements PipeTransform {
+-    in: { name: 'Bahasa Indonesia' },
++    in: { name: 'Bahasa Indonesia' }

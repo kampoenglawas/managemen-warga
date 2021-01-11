@@ -1,0 +1,34 @@
+{
+  "civilianManagementApp": {
+    "civilian": {
+      "home": {
+        "title": "Civilians",
+        "createLabel": "Create a new Civilian",
+        "createOrEditLabel": "Create or edit a Civilian",
+        "notFound": "No Civilians found"
+      },
+      "created": "A new Civilian is created with identifier {{ param }}",
+      "updated": "A Civilian is updated with identifier {{ param }}",
+      "deleted": "A Civilian is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Civilian {{ id }}?"
+      },
+      "detail": {
+        "title": "Civilian"
+      },
+      "name": "Name",
+      "identityNo": "Identity No",
+      "identityCardImage": "Identity Card Image",
+      "dateOfBirth": "Date Of Birth",
+      "placeOfBirth": "Place Of Birth",
+      "contact": "Contact",
+      "gender": "Gender",
+      "status": "Status",
+      "additionalInfo": "Additional Info",
+      "yearlyIncome": "Yearly Income",
+      "benefit": "Benefit",
+      "familyMember": "Family Member",
+      "residence": "Residence"
+    }
+  }
+}

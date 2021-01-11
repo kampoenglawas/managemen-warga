@@ -1,0 +1,23 @@
+{
+  "civilianManagementApp": {
+    "rT": {
+      "home": {
+        "title": "Daftar Rukun Tetangga",
+        "createLabel": "Daftarkan RT baru",
+        "createOrEditLabel": "Daftarkan atau edit RT",
+        "notFound": "Daftar ini masih kosong"
+      },
+      "created": "RT dengan id {{ param }} berhasil didaftarkan",
+      "updated": "RT dengan id {{ param }} telah diperbaharui",
+      "deleted": "RT dengan id {{ param }} telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Data RT dengan id {{ id }}?"
+      },
+      "detail": {
+        "title": "RT"
+      },
+      "name": "Name",
+      "residence": "Residence"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="civilianManagementApp.benefit.home.title">Benefits</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-benefit" [routerLink]="['/benefit/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="civilianManagementApp.benefit.home.createLabel">
+            Create a new Benefit
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="benefits?.length === 0">
+        <span jhiTranslate="civilianManagementApp.benefit.home.notFound">No benefits found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="benefits?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="civilianManagementApp.benefit.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="civilianManagementApp.benefit.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="frequency"><span jhiTranslate="civilianManagementApp.benefit.frequency">Frequency</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="value"><span jhiTranslate="civilianManagementApp.benefit.value">Value</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="repetition"><span jhiTranslate="civilianManagementApp.benefit.repetition">Repetition</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let benefit of benefits ;trackBy: trackId">
+                    <td><a [routerLink]="['/benefit', benefit.id, 'view']">{{ benefit.id }}</a></td>
+                    <td>{{ benefit.description }}</td>
+                    <td jhiTranslate="{{ 'civilianManagementApp.BenefitType.' + benefit.type }}">{{ benefit.type }}</td>
+                    <td>{{ benefit.frequency }}</td>
+                    <td>{{ benefit.value }}</td>
+                    <td jhiTranslate="{{ 'civilianManagementApp.RepetitionType.' + benefit.repetition }}">{{ benefit.repetition }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/benefit', benefit.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/benefit', benefit.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(benefit)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="benefits?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-family-member-heading" jhiTranslate="civilianManagementApp.familyMember.home.createOrEditLabel">Create or edit a Family Member</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="civilianManagementApp.familyMember.role" for="field_role">Role</label>
+                    <select class="form-control" name="role" formControlName="role" id="field_role">
+                        <option value="Father">{{ 'civilianManagementApp.FamilyRole.Father' | translate }}</option>
+                        <option value="Mother">{{ 'civilianManagementApp.FamilyRole.Mother' | translate }}</option>
+                        <option value="Child">{{ 'civilianManagementApp.FamilyRole.Child' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('role')!.invalid && (editForm.get('role')!.dirty || editForm.get('role')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('role')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="civilianManagementApp.familyMember.civilian" for="field_civilian">Civilian</label>
+                    <select class="form-control" id="field_civilian" name="civilian" formControlName="civilian">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="civilianOption.id === editForm.get('civilian')!.value?.id ? editForm.get('civilian')!.value : civilianOption" *ngFor="let civilianOption of civilians; trackBy: trackById">{{ civilianOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="civilianManagementApp.familyMember.family" for="field_family">Family</label>
+                    <select class="form-control" id="field_family" name="family" formControlName="family">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="familyOption.id === editForm.get('family')!.value?.id ? editForm.get('family')!.value : familyOption" *ngFor="let familyOption of families; trackBy: trackById">{{ familyOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

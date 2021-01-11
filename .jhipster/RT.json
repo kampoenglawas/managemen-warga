@@ -1,0 +1,28 @@
+{
+    "name": "RT",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "residence",
+            "otherEntityRelationshipName": "rT",
+            "relationshipName": "residence"
+        }
+    ],
+    "changelogDate": "20210109134300",
+    "entityTableName": "rt",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

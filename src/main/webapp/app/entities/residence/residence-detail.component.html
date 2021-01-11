@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="residence">
+            <h2><span jhiTranslate="civilianManagementApp.residence.detail.title">Residence</span> {{ residence.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="civilianManagementApp.residence.no">No</span></dt>
+                <dd>
+                    <span>{{ residence.no }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.residence.fullAddress">Full Address</span></dt>
+                <dd>
+                    <span>{{ residence.fullAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.residence.description">Description</span></dt>
+                <dd>
+                    <span>{{ residence.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.residence.rT">R T</span></dt>
+                <dd>
+                    <div *ngIf="residence.rT">
+                        <a [routerLink]="['/rt', residence.rT?.id, 'view']">{{ residence.rT?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/residence', residence.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

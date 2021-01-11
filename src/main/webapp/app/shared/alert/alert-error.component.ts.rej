@@ -1,0 +1,20 @@
+diff a/src/main/webapp/app/shared/alert/alert-error.component.ts b/src/main/webapp/app/shared/alert/alert-error.component.ts	(rejected hunks)
+@@ -11,5 +11,7 @@ import { AlertError } from './alert-error.model';
+-  template: ` <div class="alerts" role="alert">
+-    <div *ngFor="let alert of alerts" [ngClass]="setClasses(alert)">
+-      <ngb-alert *ngIf="alert && alert.type && alert.msg" [type]="alert.type" (close)="alert.close(alerts)">
+-        <pre [innerHTML]="alert.msg"></pre>
+-      </ngb-alert>
++  template: `
++    <div class="alerts" role="alert">
++      <div *ngFor="let alert of alerts" [ngClass]="setClasses(alert)">
++        <ngb-alert *ngIf="alert && alert.type && alert.msg" [type]="alert.type" (close)="alert.close(alerts)">
++          <pre [innerHTML]="alert.msg"></pre>
++        </ngb-alert>
++      </div>
+@@ -17 +19 @@ import { AlertError } from './alert-error.model';
+-  </div>`,
++  `
+@@ -114 +116 @@ export class AlertErrorComponent implements OnDestroy {
+-      scoped: true,
++      scoped: true

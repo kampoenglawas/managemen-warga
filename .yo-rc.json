@@ -46,6 +46,7 @@
         "name": "generator-jhipster-nodejs",
         "version": "1.2.0"
       }
-    ]
+    ],
+    "jwtSecretKey": "MjMzNGJiNzNhOTg1ZTVlOTgwM2EyMWY2MzE1M2E1OTRkZTY5ZWIzZGE0NTNkYmViZjdmMDk4YjY0MDNlYWNiMzk3ZTE1MDRiODA2Mzg1NDEyM2I5YTYyNjZiMDk4NDEyZTc0MzkzOTQ0ZDQzMGQzMmFhNmE3ZDYzYTM5YzZlNjY="
   }
 }

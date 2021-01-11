@@ -1,0 +1,10 @@
+{
+  "civilianManagementApp": {
+    "FamilyRole": {
+      "null": "",
+      "Father": "Father",
+      "Mother": "Mother",
+      "Child": "Child"
+    }
+  }
+}

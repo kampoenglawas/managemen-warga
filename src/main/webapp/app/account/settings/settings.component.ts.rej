@@ -1,0 +1,10 @@
+diff a/src/main/webapp/app/account/settings/settings.component.ts b/src/main/webapp/app/account/settings/settings.component.ts	(rejected hunks)
+@@ -11 +11 @@ import { LANGUAGES } from 'app/core/language/language.constants';
+-  templateUrl: './settings.component.html',
++  templateUrl: './settings.component.html'
+@@ -21 +21 @@ export class SettingsComponent implements OnInit {
+-    langKey: [undefined],
++    langKey: [undefined]
+@@ -33 +33 @@ export class SettingsComponent implements OnInit {
+-          langKey: account.langKey,
++          langKey: account.langKey

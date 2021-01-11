@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="civilian">
+            <h2><span jhiTranslate="civilianManagementApp.civilian.detail.title">Civilian</span> {{ civilian.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="civilianManagementApp.civilian.name">Name</span></dt>
+                <dd>
+                    <span>{{ civilian.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.identityNo">Identity No</span></dt>
+                <dd>
+                    <span>{{ civilian.identityNo }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.identityCardImage">Identity Card Image</span></dt>
+                <dd>
+                    <div *ngIf="civilian.identityCardImage">
+                        <a (click)="openFile(civilian?.identityCardImageContentType!, civilian?.identityCardImage)">
+                            <img [src]="'data:' + civilian.identityCardImageContentType + ';base64,' + civilian.identityCardImage" style="max-width: 100%;" alt="civilian image"/>
+                        </a>
+                        {{ civilian.identityCardImageContentType }}, {{ byteSize(civilian.identityCardImage) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.dateOfBirth">Date Of Birth</span></dt>
+                <dd>
+                    <span>{{ civilian.dateOfBirth }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.placeOfBirth">Place Of Birth</span></dt>
+                <dd>
+                    <span>{{ civilian.placeOfBirth }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.contact">Contact</span></dt>
+                <dd>
+                    <span>{{ civilian.contact }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'civilianManagementApp.Gender.' + civilian.gender }}">{{ civilian.gender }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'civilianManagementApp.MemberStatus.' + civilian.status }}">{{ civilian.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.additionalInfo">Additional Info</span></dt>
+                <dd>
+                    <span>{{ civilian.additionalInfo }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.yearlyIncome">Yearly Income</span></dt>
+                <dd>
+                    <span>{{ civilian.yearlyIncome }}</span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.benefit">Benefit</span></dt>
+                <dd>
+                    <span *ngFor="let benefit of civilian.benefits; let last = last">
+                        <a [routerLink]="['/benefit', benefit?.id, 'view']">{{ benefit.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.civilian.residence">Residence</span></dt>
+                <dd>
+                    <div *ngIf="civilian.residence">
+                        <a [routerLink]="['/residence', civilian.residence?.id, 'view']">{{ civilian.residence?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/civilian', civilian.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

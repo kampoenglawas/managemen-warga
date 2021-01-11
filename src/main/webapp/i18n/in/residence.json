@@ -1,0 +1,25 @@
+{
+  "civilianManagementApp": {
+    "residence": {
+      "home": {
+        "title": "Daftar Rumah/Tempat Tinggal",
+        "createLabel": "Daftar Rumah/Tempat Tinggal baru",
+        "createOrEditLabel": "Buat atau edit Data Rumah/Tempat Tinggal",
+        "notFound": "Data Rumah tidak ditemukan"
+      },
+      "created": "Rumah/Tempat Tinggal dengan id {{ param }} berhasil didaftarkan",
+      "updated": "Data Rumah/Tempat Tinggal dengan id {{ param }} telah diperbaharui",
+      "deleted": "Data Rumah/Tempat Tinggal dengan id {{ param }} telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Data Rumah/Tempat Tinggal {{ id }}?"
+      },
+      "detail": {
+        "title": "Data Rumah/Tempat Tinggal"
+      },
+      "no": "Nomor Rumah",
+      "description": "Deskipsi",
+      "member": "Penghuni",
+      "rT": "RT"
+    }
+  }
+}

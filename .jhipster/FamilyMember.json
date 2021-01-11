@@ -1,0 +1,41 @@
+{
+    "name": "FamilyMember",
+    "fields": [
+        {
+            "fieldName": "role",
+            "fieldType": "FamilyRole",
+            "fieldValues": "Father,Mother,Child",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "civilian",
+            "otherEntityRelationshipName": "familyMember",
+            "relationshipName": "civilian",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "family",
+            "otherEntityRelationshipName": "member",
+            "relationshipName": "family",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20210109134600",
+    "entityTableName": "family_member",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

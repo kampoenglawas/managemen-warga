@@ -1,0 +1,10 @@
+{
+  "civilianManagementApp": {
+    "MemberStatus": {
+      "null": "",
+      "PassAway": "PassAway",
+      "Moving": "Moving",
+      "Active": "Active"
+    }
+  }
+}

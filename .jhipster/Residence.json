@@ -1,0 +1,49 @@
+{
+    "name": "Residence",
+    "fields": [
+        {
+            "fieldName": "no",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fullAddress",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "civilian",
+            "otherEntityRelationshipName": "residence",
+            "relationshipName": "member"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "rT",
+            "otherEntityRelationshipName": "residence",
+            "relationshipName": "rT",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20210109134800",
+    "entityTableName": "residence",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

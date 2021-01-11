@@ -1,0 +1,6 @@
+diff a/src/main/webapp/app/shared/shared.module.ts b/src/main/webapp/app/shared/shared.module.ts	(rejected hunks)
+@@ -19,2 +19,2 @@ import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
+-    HasAnyAuthorityDirective,
+-  ],
++    HasAnyAuthorityDirective
++  ]
