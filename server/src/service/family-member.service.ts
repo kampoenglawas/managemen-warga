@@ -7,6 +7,7 @@ import { FamilyMemberRepository } from '../repository/family-member.repository';
 
 const relationshipNames = [];
 relationshipNames.push('family');
+relationshipNames.push('civilian');
 
 @Injectable()
 export class FamilyMemberService {

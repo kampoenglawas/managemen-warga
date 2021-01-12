@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
-import { IPovertyCivilian } from 'app/shared/model/poverty-civilian.model';
+import { IPovertyCivilian, IPovertyRatio } from 'app/shared/model/poverty-civilian.model';
 
 type EntityResponseType = HttpResponse<IPovertyCivilian>;
 type EntityArrayResponseType = HttpResponse<IPovertyCivilian[]>;
@@ -25,6 +25,10 @@ export class PovertyCivilianService {
 
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<IPovertyCivilian>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  getRatio(): Observable<HttpResponse<IPovertyRatio>> {
+    return this.http.get<IPovertyRatio>(`${this.resourceUrl}/ratio`, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

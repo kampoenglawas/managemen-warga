@@ -38,6 +38,7 @@ export class CivilianService {
   }
 
   async save(civilianDTO: CivilianDTO): Promise<CivilianDTO | undefined> {
+    console.log("civilianDTO",civilianDTO);
     const entity = CivilianMapper.fromDTOtoEntity(civilianDTO);
     const result = await this.civilianRepository.save(entity);
     return CivilianMapper.fromEntityToDTO(result);

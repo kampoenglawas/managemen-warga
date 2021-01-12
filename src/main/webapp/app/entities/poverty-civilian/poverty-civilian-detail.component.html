@@ -8,15 +8,15 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="civilianManagementApp.povertyCivilian.reason">Reason</span></dt>
-                <dd>
-                    <span>{{ povertyCivilian.reason }}</span>
-                </dd>
                 <dt><span jhiTranslate="civilianManagementApp.povertyCivilian.civilian">Civilian</span></dt>
                 <dd>
                     <div *ngIf="povertyCivilian.civilian">
-                        <a [routerLink]="['/civilian', povertyCivilian.civilian?.id, 'view']">{{ povertyCivilian.civilian?.id }}</a>
+                        <a [routerLink]="['/civilian', povertyCivilian.civilian?.id, 'view']">{{ povertyCivilian.civilian?.name }}</a>
                     </div>
+                </dd>
+                <dt><span jhiTranslate="civilianManagementApp.povertyCivilian.reason">Reason</span></dt>
+                <dd>
+                    <span>{{ povertyCivilian.reason }}</span>
                 </dd>
             </dl>
 

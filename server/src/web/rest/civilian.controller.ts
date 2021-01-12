@@ -36,6 +36,7 @@ export class CivilianController {
     return results;
   }
 
+
   @Get('/:id')
   @Roles(RoleType.USER)
   @ApiResponse({

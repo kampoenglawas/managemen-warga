@@ -16,3 +16,9 @@ export class PovertyCivilianDTO extends BaseDTO {
 
   // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }
+
+
+export class PovertyRationDTO extends BaseDTO {
+  size: number;
+  total: number;
+}

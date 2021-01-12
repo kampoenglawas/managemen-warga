@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Logger, Param, Post as PostMethod, Put, UseGuards, Req, UseInterceptors } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { Request } from 'express';
-import { PovertyCivilianDTO } from '../../service/dto/poverty-civilian.dto';
+import {PovertyCivilianDTO, PovertyRationDTO} from '../../service/dto/poverty-civilian.dto';
 import { PovertyCivilianService } from '../../service/poverty-civilian.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
@@ -34,6 +34,18 @@ export class PovertyCivilianController {
     });
     HeaderUtil.addPaginationHeaders(req.res, new Page(results, count, pageRequest));
     return results;
+  }
+
+
+  @Get('/ratio')
+  @Roles(RoleType.USER)
+  @ApiResponse({
+    status: 200,
+    description: 'Get ratio of poverty civilian',
+    type: PovertyRationDTO
+  })
+  async count(@Req() req: Request): Promise<PovertyRationDTO> {
+    return await this.povertyCivilianService.getPovertyRatio();
   }
 
   @Get('/:id')

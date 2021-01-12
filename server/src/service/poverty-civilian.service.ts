@@ -1,17 +1,20 @@
 import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindManyOptions, FindOneOptions } from 'typeorm';
-import { PovertyCivilianDTO } from '../service/dto/poverty-civilian.dto';
-import { PovertyCivilianMapper } from '../service/mapper/poverty-civilian.mapper';
+import {PovertyCivilianDTO, PovertyRationDTO} from './dto/poverty-civilian.dto';
+import { PovertyCivilianMapper } from './mapper/poverty-civilian.mapper';
 import { PovertyCivilianRepository } from '../repository/poverty-civilian.repository';
+import {CivilianRepository} from "../repository/civilian.repository";
 
 const relationshipNames = [];
+relationshipNames.push("civilian");
 
 @Injectable()
 export class PovertyCivilianService {
   logger = new Logger('PovertyCivilianService');
 
-  constructor(@InjectRepository(PovertyCivilianRepository) private povertyCivilianRepository: PovertyCivilianRepository) {}
+  constructor(@InjectRepository(PovertyCivilianRepository) private povertyCivilianRepository: PovertyCivilianRepository
+              ,@InjectRepository(CivilianRepository) private civilianRepository: CivilianRepository) {}
 
   async findById(id: string): Promise<PovertyCivilianDTO | undefined> {
     const options = { relations: relationshipNames };
@@ -33,6 +36,15 @@ export class PovertyCivilianService {
       resultList[0] = povertyCivilianDTO;
     }
     return resultList;
+  }
+
+  async getPovertyRatio(): Promise<PovertyRationDTO> {
+    const size = await this.povertyCivilianRepository.count();
+    const total = await this.civilianRepository.count();
+    return {
+      size: size,
+      total: total
+    }
   }
 
   async save(povertyCivilianDTO: PovertyCivilianDTO): Promise<PovertyCivilianDTO | undefined> {
