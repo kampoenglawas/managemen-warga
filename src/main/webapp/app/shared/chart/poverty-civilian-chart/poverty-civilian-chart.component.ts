@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PovertyCivilianService } from 'app/entities/poverty-civilian/poverty-civilian.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { PovertyCivilianService } from 'app/entities/poverty-civilian/poverty-ci
   styleUrls: ['./poverty-civilian-chart.component.scss']
 })
 export class PovertyCivilianChartComponent implements OnInit {
+  @Input() containerClass = 'col-md-4';
   single: any[] = [
     {
       name: 'Germany',

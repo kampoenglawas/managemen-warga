@@ -3,11 +3,11 @@
         <span class="hipster img-fluid rounded"></span>
     </div>
     <div class="col-md-9">
-        <div class="col-md-4" *ngIf="isAuthenticated()">
+        <div class="col-md-6" *ngIf="isAuthenticated()">
             <div class="card">
                 <h5 class="card-header">Persentase warga kurang mampu</h5>
                 <div class="card-body">
-                    <jhi-poverty-civilian-chart></jhi-poverty-civilian-chart>
+                    <jhi-poverty-civilian-chart containerClass="row-cols-md-6"></jhi-poverty-civilian-chart>
                 </div>
             </div>
         </div>

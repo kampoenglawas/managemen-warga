@@ -1,9 +1,8 @@
+<div [className]="containerClass">
 <ngx-charts-pie-chart
-    [view]="view"
     [scheme]="colorScheme"
     [results]="single"
     [gradient]="gradient"
-    [legend]="showLegend"
     [legendPosition]="legendPosition"
     [labels]="showLabels"
     [doughnut]="isDoughnut"
@@ -12,3 +11,4 @@
     (deactivate)="onDeactivate($event)"
 >
 </ngx-charts-pie-chart>
+</div>
