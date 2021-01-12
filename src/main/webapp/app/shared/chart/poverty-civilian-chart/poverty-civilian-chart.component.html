@@ -1,4 +1,4 @@
-<div [className]="containerClass">
+<div *ngIf="single.length > 0" [className]="containerClass">
 <ngx-charts-pie-chart
     [scheme]="colorScheme"
     [results]="single"
@@ -11,4 +11,7 @@
     (deactivate)="onDeactivate($event)"
 >
 </ngx-charts-pie-chart>
+</div>
+<div *ngIf="single.length == 0">
+    <strong>Belum ada data</strong>
 </div>

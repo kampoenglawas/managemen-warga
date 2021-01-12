@@ -8,24 +8,7 @@ import { PovertyCivilianService } from 'app/entities/poverty-civilian/poverty-ci
 })
 export class PovertyCivilianChartComponent implements OnInit {
   @Input() containerClass = 'col-md-4';
-  single: any[] = [
-    {
-      name: 'Germany',
-      value: 8940000
-    },
-    {
-      name: 'USA',
-      value: 5000000
-    },
-    {
-      name: 'France',
-      value: 7200000
-    },
-    {
-      name: 'UK',
-      value: 6200000
-    }
-  ];
+  single: any[] = [];
   view: any[] = [700, 400];
 
   // options
@@ -43,6 +26,10 @@ export class PovertyCivilianChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.povertyCivilianService.getRatio().subscribe(result => {
+      if (result.body?.total === 0 && result.body?.size === 0) {
+        this.single = [];
+        return;
+      }
       this.single = [
         { name: 'Total Warga', value: result.body?.total },
         { name: 'Jumlah Warga Miskin', value: result.body?.size }
